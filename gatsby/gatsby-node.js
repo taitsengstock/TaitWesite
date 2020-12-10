@@ -16,7 +16,6 @@ async function turnPizzasIntoPages({ graphql, actions }) {
       }
     }
   `);
-  console.log(data);
   // 3. loop over all pizzas and creata page
   data.pizzas.nodes.forEach((pizza) => {
     actions.createPage({
@@ -46,7 +45,6 @@ async function turnProjectsIntoPages({ graphql, actions }) {
       }
     }
   `);
-  console.log(data);
   // 3. loop over all pizzas and creata page
   data.projects.nodes.forEach((project) => {
     actions.createPage({
