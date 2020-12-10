@@ -273,10 +273,13 @@ export const OpenSkillTileStyles = styled.div`
     padding-top: 100%;
     transition: padding-top 0.2s;
     transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    top: 0;
+    box-sizing: border-box;
   }
   .details-container .description {
     margin-top: 0%;
-    padding: 20px;
+    padding: 2rem;
     transition: margin-top 0.2s;
   }
   .tile.open .details-container {
@@ -296,7 +299,7 @@ export const OpenSkillTileStyles = styled.div`
     width: 100%;
   }
   .open .actions-container {
-    height: calc(100% - 20px);
+    height: calc(100% - 1rem);
   }
   .actions-container .actions {
     transition: height 0.2s ease-in-out;

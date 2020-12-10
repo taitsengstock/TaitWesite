@@ -48,7 +48,7 @@ function SingleSkill({ skill }) {
             </div>
           </div>
           <div className="details-container">
-            <div>{skill.description}</div>
+            <div className="description">{skill.description}</div>
           </div>
 
           <div className="actions-container flex-center flex">

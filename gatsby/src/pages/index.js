@@ -11,7 +11,6 @@ function FeaturedPerson({ featuredPerson }) {
   return (
     <div>
       {/* {!featuredSkills && <LoadingGrid count={4} />} */}
-      {!featuredPerson && !featuredPerson?.length && <p>No skills available</p>}
       {featuredPerson?.length && <HomeMainSection person={featuredPerson} />}
     </div>
   );
@@ -21,7 +20,6 @@ function FeaturedSkills({ featuredSkills }) {
   return (
     <div>
       {/* {!featuredSkills && <LoadingGrid count={4} />} */}
-      {!featuredSkills && !featuredSkills?.length && <p>No skills available</p>}
       {featuredSkills?.length && <HomeSkillGrid skills={featuredSkills} />}
     </div>
   );

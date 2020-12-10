@@ -49,6 +49,7 @@ export default function useLatestData() {
                     }
                   }
                 }
+                description
               }
 
               featuredProjects {
