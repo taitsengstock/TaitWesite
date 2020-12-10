@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[14],{Njg2:function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return u}));var a=t("q1tI"),r=t.n(a);t("85Sb");function u(){return r.a.createElement(r.a.Fragment,null,r.a.createElement("p",null,"Hey I'm slicemaster"))}}}]);
+//# sourceMappingURL=component---src-pages-slicemasters-js-251c20b81335f9f5b38a.js.map
