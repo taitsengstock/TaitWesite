@@ -1,16 +1,7 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-
-const HomeMainStyles = styled.div`
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr 2fr;
-  max-width: 800px;
-  margin: 0 auto;
-  img {
-  }
-`;
+import { HomeMainStyles } from '../styles/Grids';
 
 export default function HomeMainSection({ person }) {
   return (

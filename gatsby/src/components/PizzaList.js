@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link } from 'gatsby-plugin-modal-routing';
+// import { Link } from 'gatsby-plugin-modal-routing';
 import Img from 'gatsby-image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'gatsby';
 
 function SinglePizza({ pizza }) {
   return (
     <div>
       <Link
         to={`/pizza/${pizza.slug.current}`}
-        asModal
+        // asModal
         // state={{
         //   modal: true,
         // }}

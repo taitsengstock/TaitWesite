@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     font-size: 10px;
     background-color: #e9e9ea;
+    background: #e9e9ea url(${stripes}); 
   }
 
   body {
@@ -108,6 +109,14 @@ const GlobalStyles = createGlobalStyle`
       66% { opacity: 0; filter:alpha(opacity=0); }
       100% { opacity: 1; filter:alpha(opacity=100); }
   }
+  @keyframes Shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
   ul {
     padding-inline-start: 10px;
     list-style-type: disc;
@@ -158,11 +167,50 @@ const GlobalStyles = createGlobalStyle`
   .pull-right {
     margin-left: auto;
   }
+  .arrow {
+    cursor: pointer;
+  }
+  .loading-item {
+    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');
+    position: relative;
+    background: --black;
+    background: linear-gradient(
+      to right,
+      #2e2e2e 0%,
+      #3b3a3a 50%,
+      #2e2e2e 100%
+    );
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: Shimmer;
+    animation-timing-function: linear;
+    background-size: 200% 200%;
+    border-radius: 8px;
+  }
+  .loading-item.light {
+    background: --grey;
+    background: linear-gradient(
+      to right,
+      #efefef 0%,
+      #f4f4f4 50%,
+      #efefef 100%
+    );
+  }
   .round {
     border-radius: 50%;
   }
-  .arrow {
-    cursor: pointer;
+  .ReactModal__Overlay {
+      opacity: 0;
+      transition: opacity 500ms ease-in-out;
+  }
+
+  .ReactModal__Overlay--after-open{
+      opacity: 1;
+  }
+
+  .ReactModal__Overlay--before-close{
+      opacity: 0;
   }
 `;
 

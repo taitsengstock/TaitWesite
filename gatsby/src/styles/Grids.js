@@ -17,49 +17,50 @@ export const ItemsGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
-// Single Grid Item
-export const ItemStyles = styled.div`
-  background: red;
-  text-align: center;
-  position: relative;
-  img {
-    height: auto;
-    font-size: 0px;
+export const HomeLoadingGridStyles = styled.div`
+  .loading-item {
+    padding-top: 77%;
   }
-  p {
-    transform: rotate(-2deg) translateY(-50%);
-    position: absolute;
-    width: 100%;
-    left: 0;
+  .loading-slider-arrows .loading-item {
+    padding-top: 0;
+    padding: 0px;
+    margin: 1rem;
+    height: 1em;
+    width: 0.625em;
   }
-  .mark {
-    display: inline;
+  .slick-slider {
+    margin: -1rem;
   }
+  .slick-slide {
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+  }
+`;
 
-  @keyframes placeHolderShimmer {
-    0% {
-      background-position: -100% 0;
-    }
-    100% {
-      background-position: 100% 0;
-    }
+export const HomeMainStyles = styled.div`
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 2fr;
+  max-width: 800px;
+  margin: 0 auto;
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
+  .round {
+    max-width: 33vw;
+  }
+`;
 
-  img.loading {
-    animation-duration: 1.8s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-name: placeHolderShimmer;
-    animation-timing-function: linear;
-    background: --black;
-    background: linear-gradient(
-      to right,
-      #2e2e2e 0%,
-      #3b3a3a 50%,
-      #2e2e2e 100%
-    );
-    background-size: 200% 200%;
-    position: relative;
+export const HomeLoadingMainStyles = styled(HomeMainStyles)`
+  .loading-item.round {
+    padding-top: 100%;
+  }
+  @media (max-width: 980px) {
+    .loading-item.round {
+      padding-top: 33vw;
+      margin: 0 auto;
+    }
   }
 `;
 

@@ -1,26 +1,18 @@
 import React from 'react';
 import HomeSkillGrid from '../components/HomeSkillGrid';
 import HomeProjectGrid from '../components/HomeProjectGrid';
-import LoadingGrid from '../components/LoadingGrid';
+import HomeLoadingGrid from '../components/HomeLoadingGrid';
 import { HomePageGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
 import HomeMainSection from '../components/HomeMainSection';
+import HomeLoadingMainSection from '../components/HomeLoadingMainSection';
 
 function FeaturedPerson({ featuredPerson }) {
   console.log(featuredPerson);
   return (
     <div>
-      {/* {!featuredSkills && <LoadingGrid count={4} />} */}
+      {!featuredPerson && <HomeLoadingMainSection />}
       {featuredPerson?.length && <HomeMainSection person={featuredPerson} />}
-    </div>
-  );
-}
-function FeaturedSkills({ featuredSkills }) {
-  console.log(featuredSkills);
-  return (
-    <div>
-      {/* {!featuredSkills && <LoadingGrid count={4} />} */}
-      {featuredSkills?.length && <HomeSkillGrid skills={featuredSkills} />}
     </div>
   );
 }
@@ -28,10 +20,19 @@ function FeaturedProjects({ featuredProjects }) {
   console.log(featuredProjects);
   return (
     <div>
-      {!featuredProjects && <LoadingGrid count={3} />}
+      {!featuredProjects && <HomeLoadingGrid count={3} />}
       {featuredProjects?.length && (
         <HomeProjectGrid projects={featuredProjects} />
       )}
+    </div>
+  );
+}
+function FeaturedSkills({ featuredSkills }) {
+  console.log(featuredSkills);
+  return (
+    <div>
+      {!featuredSkills && <HomeLoadingGrid count={3} />}
+      {featuredSkills?.length && <HomeSkillGrid skills={featuredSkills} />}
     </div>
   );
 }

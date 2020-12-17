@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby-plugin-modal-routing';
+// import { Link } from 'gatsby-plugin-modal-routing';
 import Img from 'gatsby-image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 const classNames = require('classnames');
 
@@ -51,7 +52,7 @@ function SingleProject({ project }) {
           <Img fluid={project.image.asset.fluid} />
         </div>
 
-        <Link to={`/project/${project.slug.current}`} asModal>
+        <Link to={`/project/${project.slug.current}`}>
           <h2>
             <span className="mark">{project.name}</span>
           </h2>

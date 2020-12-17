@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'gatsby-plugin-modal-routing';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,6 +10,8 @@ import {
   faChevronRight,
   faChevronUp,
 } from '@fortawesome/free-solid-svg-icons';
+// @ts-ignore
+import { Link } from 'gatsby-plugin-modal-routing';
 import { CarouselStyles, OpenTileStyles } from '../styles/Grids';
 
 const classNames = require('classnames');
@@ -109,11 +110,27 @@ export default function HomeProjectGrid({ projects }) {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 980,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <CarouselStyles>
