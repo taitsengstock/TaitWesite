@@ -192,6 +192,20 @@ export const OpenTileStyles = styled.div`
     opacity: 1;
     transition-delay: 0.4s;
   }
+  @media (max-width: 980px) {
+    .overlay {
+      opacity: 0;
+    }
+    .actions-container .actions {
+      height: 40px;
+    }
+    .logo {
+      transform: scale(0.8);
+    }
+    .more {
+      opacity: 1;
+    }
+  }
 `;
 
 export const OpenSkillTileStyles = styled.div`

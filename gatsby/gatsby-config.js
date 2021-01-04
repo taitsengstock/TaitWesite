@@ -30,7 +30,7 @@ export default {
         // Object of props that will be passed to the react-modal container
         // See http://reactcommunity.org/react-modal/#usage
         modalProps: {
-          closeTimeoutMS: 5000,
+          // closeTimeoutMS: 5000,
           style: {
             overlay: {
               position: `fixed`,
