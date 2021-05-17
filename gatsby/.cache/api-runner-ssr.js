@@ -1,11 +1,11 @@
 var plugins = [{
-      plugin: require('/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
+      plugin: require('/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
+      plugin: require('/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
       options: {"plugins":[],"projectId":"48u8yazd","dataset":"production","watchMode":true,"token":"skSRJUuJ1icojjC2wYFascg81Ld0QHNgZmcuAu3ZwFbY1yTX6vU1om4VQhtNi3TpTry8I1h2zlgZZXl7dJPlUq59NU8SSCpsyfA4KoF2WRTO9ihXbQIkzaDTnB3lLFY3wYu3csetrgcaS0rynvEAqTNwrWFnxIMETqnezx57r0PA3sjFGCKV"},
     },{
-      plugin: require('/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/gatsby-ssr'),
+      plugin: require('/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/gatsby-ssr'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:

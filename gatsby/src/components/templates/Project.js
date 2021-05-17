@@ -45,7 +45,7 @@ export default function SingleProjectPage({ data: { project } }) {
     slidesToScroll: 1,
     dots: false,
   };
-
+  
   return (
     <div>
       <h1>{project.name}</h1>

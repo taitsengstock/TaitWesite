@@ -30,6 +30,7 @@ function SingleProject({ project }) {
     open: showing ? 'open' : '',
   });
 
+  console.log(project.image.asset.fluid)
   return (
     <ProjectStyles>
       <div

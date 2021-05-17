@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 // import { Link } from 'gatsby-plugin-modal-routing';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -11,12 +11,24 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { CarouselStyles, OpenSkillTileStyles } from '../styles/Grids';
+import TileContext from './TileContext';
 
 const classNames = require('classnames');
 
 function SingleSkill({ skill }) {
+  
+  
+  const [tilesIsShowing, setTileIsShowing] = useContext(TileContext);
+
   const [showing, setShow] = useState(false);
-  const toggleShow = () => setShow(!showing);
+
+  const toggleShow = (event) => {
+    let containerTile = event.target.closest('.tile')
+    let OtherTiles = document.querySelectorAll('.tile')
+    setTileIsShowing(!tilesIsShowing);
+    setShow(!showing);
+    console.log(tilesIsShowing)
+  }
 
   const skillClasses = classNames({
     tile: true,

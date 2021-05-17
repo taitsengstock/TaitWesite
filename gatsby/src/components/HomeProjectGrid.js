@@ -14,25 +14,30 @@ import {
 import { Link } from 'gatsby-plugin-modal-routing';
 import { CarouselStyles, OpenTileStyles } from '../styles/Grids';
 
+
+
+
 const classNames = require('classnames');
 
 function SingleProject({ project }) {
+
   const [showing, setShow] = useState(false);
   const toggleShow = () => setShow(!showing);
 
   const projectClasses = classNames({
-    tile: true,
-    project: true,
-    open: showing ? 'open' : '',
-    closed: !showing ? 'closed' : '',
+      tile: true,
+      project: true,
+      open: showing ? 'open' : '',
+      closed: !showing ? 'closed' : '',
   });
+
+
+
 
   return (
     <OpenTileStyles>
-      <div
-        // className={hovered ? 'active' : ''}
+      <div     
         className={projectClasses}
-        // onMouseLeave={close}
       >
         <div className="tile-inner">
           <div className="overlay flex flex-middle" />

@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/@reach/router/index.js"), require("/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
+		module.exports = factory(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/@reach/router/index.js"), require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
 	else if(typeof define === 'function' && define.amd)
-		define("lib", ["/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/@reach/router/index.js", "/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/lodash/merge.js", "react", "react-dom/server"], factory);
+		define("lib", ["/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/@reach/router/index.js", "/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/lodash/merge.js", "react", "react-dom/server"], factory);
 	else if(typeof exports === 'object')
-		exports["lib"] = factory(require("/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/@reach/router/index.js"), require("/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
+		exports["lib"] = factory(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/@reach/router/index.js"), require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
 	else
-		root["lib"] = factory(root["/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/@reach/router/index.js"], root["/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/lodash/merge.js"], root["react"], root["react-dom/server"]);
+		root["lib"] = factory(root["/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/@reach/router/index.js"], root["/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/lodash/merge.js"], root["react"], root["react-dom/server"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE__reach_router__, __WEBPACK_EXTERNAL_MODULE_lodash_merge__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom_server__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -1677,21 +1677,28 @@ function stripPrefix(str, prefix) {
 /*!***********************!*\
   !*** ./gatsby-ssr.js ***!
   \***********************/
-/*! exports provided: wrapPageElement */
+/*! exports provided: wrapPageElement, wrapRootElement */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrapPageElement", function() { return wrapPageElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrapRootElement", function() { return wrapRootElement; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _src_components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/components/Layout */ "./src/components/Layout.js");
+/* harmony import */ var _src_components_TileContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/components/TileContext */ "./src/components/TileContext.js");
+
 
 
 function wrapPageElement(_ref) {
   var element = _ref.element,
       props = _ref.props;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], props, element);
+}
+function wrapRootElement(_ref2) {
+  var element = _ref2.element;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_TileContext__WEBPACK_IMPORTED_MODULE_2__["TileContextProvider"], null, element);
 }
 
 /***/ }),
@@ -35183,6 +35190,37 @@ function Nav() {
 
 /***/ }),
 
+/***/ "./src/components/TileContext.js":
+/*!***************************************!*\
+  !*** ./src/components/TileContext.js ***!
+  \***************************************/
+/*! exports provided: TileContextProvider, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TileContextProvider", function() { return TileContextProvider; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+ // Create Tile Conetxt
+
+var TileContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext();
+function TileContextProvider(_ref) {
+  var children = _ref.children;
+
+  // we need to put the state in here
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      tilesIsShowing = _useState[0],
+      setTileIsShowing = _useState[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TileContext.Provider, {
+    value: [tilesIsShowing, setTileIsShowing]
+  }, children);
+}
+/* harmony default export */ __webpack_exports__["default"] = (TileContext);
+
+/***/ }),
+
 /***/ "./src/styles/GlobalStyles.js":
 /*!************************************!*\
   !*** ./src/styles/GlobalStyles.js ***!
@@ -35254,9 +35292,9 @@ var Typography = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGl
 /***/ }),
 
 /***/ "@reach/router":
-/*!*************************************************************************************************************!*\
-  !*** external "/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/@reach/router/index.js" ***!
-  \*************************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** external "/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/@reach/router/index.js" ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -35265,9 +35303,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__reach_router__;
 /***/ }),
 
 /***/ "lodash/merge":
-/*!******************************************************************************************************!*\
-  !*** external "/Users/Hammarstedt/Documents/GitHub/TaitWebsite/gatsby/node_modules/lodash/merge.js" ***!
-  \******************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** external "/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/node_modules/lodash/merge.js" ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
