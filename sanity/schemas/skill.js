@@ -34,5 +34,11 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'color',
+      title: 'Color',
+      type: 'array',
+      of: [{ type: 'string' }]
+    },
   ],
 };

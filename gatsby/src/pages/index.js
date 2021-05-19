@@ -50,9 +50,9 @@ export default function HomePage() {
         <div className="container">
           <FeaturedProjects featuredProjects={featuredProjects} />
         </div>
-        <div className="container">
+        {/* <div className="container">
           <FeaturedSkills featuredSkills={featuredSkills} />
-        </div>
+        </div> */}
       </HomePageGrid>
     </div>
   );

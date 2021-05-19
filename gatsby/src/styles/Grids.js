@@ -194,7 +194,7 @@ export const OpenTileStyles = styled.div`
   }
   @media (max-width: 980px) {
     .overlay {
-      opacity: 0;
+      opacity: 0.4;
     }
     .actions-container .actions {
       height: 40px;

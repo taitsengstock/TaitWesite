@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
+import useOutsideClick from "../utils/useOutsideClick"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronDown,
@@ -20,9 +21,17 @@ import { CarouselStyles, OpenTileStyles } from '../styles/Grids';
 const classNames = require('classnames');
 
 function SingleProject({ project }) {
-
+  const tileRef = useRef()
   const [showing, setShow] = useState(false);
   const toggleShow = () => setShow(!showing);
+
+  const mobileToggleShow = () => {
+   if (window.matchMedia("(max-width: 700px)").matches) {
+    setShow(!showing)
+   } else {
+     return null
+   }
+  };
 
   const projectClasses = classNames({
       tile: true,
@@ -31,13 +40,17 @@ function SingleProject({ project }) {
       closed: !showing ? 'closed' : '',
   });
 
+  useOutsideClick(tileRef, () => {
+    setShow(false)
+  });
 
 
 
   return (
-    <OpenTileStyles>
+    <OpenTileStyles ref={tileRef}>
       <div     
         className={projectClasses}
+        onClick={mobileToggleShow}
       >
         <div className="tile-inner">
           <div className="overlay flex flex-middle" />
@@ -48,7 +61,7 @@ function SingleProject({ project }) {
               backgroundSize: 'cover',
             }}
           />
-          <div className="text-container small-text">
+          <div className="text-container">
             <div className="less flex flex-center">
               <div className="arrow">
                 <FontAwesomeIcon
@@ -58,16 +71,30 @@ function SingleProject({ project }) {
                 />
               </div>
             </div>
-            <h2>
+            <h2 className="h3">
               <span>{project.name}</span>
             </h2>
-            <p> {project.skills.map((skill) => skill.name)}</p>
+            <p css={css`
+              margin-bottom: 16px;
+            `}> {project?.skills?.slice(0, 3).map((skill, index) => 
+              <span css={css`
+                display: inline-block;
+                &:not(:last-child):after {
+                  content: ',';
+                  display: inline;
+                  margin-right: 7px;
+                  background-color: ${skill.color};
+                }
+              `}>
+                {skill.name}
+              </span>
+              )}
+            </p>
             <Link
               to={`/project/${project.slug.current}`}
               asModal
-              // onClick={close}
             >
-              See More
+              <button>View Samples</button>
             </Link>
           </div>
           <div className="actions-container flex-middle flex-center flex flex-column">

@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{"r/2Z":function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return u}));var a=t("q1tI"),r=t.n(a);t("85Sb");function u(){return r.a.createElement(r.a.Fragment,null,r.a.createElement("p",null,"Hey I'm Homepage"))}}}]);
-//# sourceMappingURL=component---src-pages-orders-js-f77e7b8f0c429796d9fc.js.map

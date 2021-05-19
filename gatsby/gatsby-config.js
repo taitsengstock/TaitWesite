@@ -48,6 +48,7 @@ export default {
               right: 'auto',
               width: '100%',
               boxSizing: 'border-box',
+              borderRadius: '8px',
             },
           },
         },

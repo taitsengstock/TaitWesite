@@ -4,6 +4,14 @@ import font from '../assets/fonts/frenchfries.woff';
 import montserratLight from '../assets/fonts/Montserrat-Light.ttf';
 import openSansBold from '../assets/fonts/OpenSans-Bold.ttf';
 
+export const breakpoints =  {
+  mobile: '@media (max-width: 768px)',
+  tablet: '@media (max-width: 1024px)',
+  desktop: '@media (max-width: 1230px)',
+  desktopUp: '@media (min-width: 1025px)'
+  }
+const { mobile } = breakpoints
+
 const Typography = createGlobalStyle`
 
   @font-face {
@@ -52,7 +60,12 @@ const Typography = createGlobalStyle`
   }
   .small-text {
     font-size: 0.8em;
+    ${mobile} {
+      font-size: 1em;
+    }
   }
+
+
 `;
 
 export default Typography;

@@ -48,12 +48,19 @@ export default function SingleProjectPage({ data: { project } }) {
   
   return (
     <div>
-      <h1>{project.name}</h1>
-      <ul>
-        {project.skills.map((skill) => (
-          <li key={skill.id}>{skill.name}</li>
-        ))}
-      </ul>
+      <div css={css`
+      padding: 20px;
+      `}>
+        <h1 className="h2">{project.name}</h1>
+        <ul css={css`
+           list-style-type: none;
+           padding-inline-start: 0px;
+        `}>
+          {project.skills.map((skill) => (
+            <li key={skill.id} className="label">{skill.name}</li>
+          ))}
+        </ul>
+      </div>
       <SliderStyles>
         <FontAwesomeIcon
           icon={faChevronLeft}

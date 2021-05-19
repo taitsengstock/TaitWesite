@@ -1,6 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 import stripes from '../assets/images/stripes.svg';
 
+export const breakpoints =  {
+  mobile: '@media (max-width: 768px)',
+  tablet: '@media (max-width: 1024px)',
+  desktop: '@media (max-width: 1230px)',
+  desktopUp: '@media (min-width: 1025px)'
+  }
+const { mobile } = breakpoints
+
 const GlobalStyles = createGlobalStyle`
   :root {
     --red: #FF4949;
@@ -18,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-size: 2rem;
+    font-size: 16px;
   }
 
   fieldset {
@@ -117,6 +125,58 @@ const GlobalStyles = createGlobalStyle`
       background-position: 100% 0;
     }
   }
+
+  h1, .h1{
+    font-size: 60px;
+    line-height: 1.3;
+    ${mobile}{
+      font-size: 36px;
+    }
+    &.serif {
+      font-family: 'Romie', sans-serif;
+    }
+  }
+
+  h2, .h2{
+    font-size: 27px;
+    line-height: 1.3;
+    ${mobile}{
+      font-size: 19px;
+    }
+  }
+
+  h3, .h3{
+    font-size: 20px;
+    line-height: 1.3;
+    ${mobile}{
+      font-size: 18px;
+    }
+  }
+
+  h4, .h4{
+    font-size: 14px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    ${mobile}{
+      font-size: 12px;
+    }
+  }
+
+  body, .p{
+    font-size: 16px;
+    line-height: 1.3;
+    ${mobile}{
+      font-size: 16px;
+    }
+  }
+
+  p{
+    margin-bottom: 0.5em;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
   ul {
     padding-inline-start: 10px;
     list-style-type: disc;
@@ -200,6 +260,9 @@ const GlobalStyles = createGlobalStyle`
   .round {
     border-radius: 50%;
   }
+  body.ReactModal__Body--open {
+    overflow-y: hidden;
+  }
   .ReactModal__Overlay {
       opacity: 0;
       transition: opacity 500ms ease-in-out;
@@ -212,6 +275,17 @@ const GlobalStyles = createGlobalStyle`
   .ReactModal__Overlay--before-close{
       opacity: 0;
   }
-`;
+  .container {
+    margin: 4rem 0;
+  }
+  .label {
+    background: var(--grey);
+    display: inline-block;
+    margin-right: 0.5em;
+    padding: 5px 7px;
+    margin-bottom: 0.5em;
+    border-radius: 4px;
+  }
+`
 
 export default GlobalStyles;
