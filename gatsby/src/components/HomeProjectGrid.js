@@ -14,7 +14,9 @@ import {
 // @ts-ignore
 import { Link } from 'gatsby-plugin-modal-routing';
 import { CarouselStyles, OpenTileStyles } from '../styles/Grids';
+import {breakpoints} from '../styles/GlobalStyles.js';
 
+const {tablet} = breakpoints
 
 
 
@@ -45,12 +47,12 @@ function SingleProject({ project }) {
   });
 
 
-
   return (
-    <OpenTileStyles ref={tileRef}>
+    <OpenTileStyles >
       <div     
         className={projectClasses}
         onClick={mobileToggleShow}
+        // ref={tileRef}
       >
         <div className="tile-inner">
           <div className="overlay flex flex-middle" />
@@ -61,7 +63,10 @@ function SingleProject({ project }) {
               backgroundSize: 'cover',
             }}
           />
-          <div className="text-container">
+          <div className="text-container" css={css`
+            display: grid;
+            grid-template-rows: min-content 1fr;
+          `}>
             <div className="less flex flex-center">
               <div className="arrow">
                 <FontAwesomeIcon
@@ -71,31 +76,41 @@ function SingleProject({ project }) {
                 />
               </div>
             </div>
-            <h2 className="h3">
-              <span>{project.name}</span>
-            </h2>
-            <p css={css`
-              margin-bottom: 16px;
-            `}> {project?.skills?.slice(0, 3).map((skill, index) => 
-              <span css={css`
-                display: inline-block;
-                &:not(:last-child):after {
-                  content: ',';
-                  display: inline;
-                  margin-right: 7px;
-                  background-color: ${skill.color};
-                }
-              `}>
-                {skill.name}
-              </span>
-              )}
-            </p>
-            <Link
-              to={`/project/${project.slug.current}`}
-              asModal
-            >
-              <button>View Samples</button>
-            </Link>
+            <div css={css`
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+            `}>
+              <h2 className="h3">
+                <span>{project.name}</span>
+              </h2>
+              <p css={css`
+                margin-bottom: 20px;
+              `}> {project?.skills?.slice(0, 3).map((skill, index) => 
+                <span css={css`
+                  display: inline-block;
+                  font-size: 0.9em;
+                  ${tablet} {
+                    font-size: 1em;
+                  }
+                  &:not(:last-child):after {
+                    content: ',';
+                    display: inline;
+                    margin-right: 7px;
+                    background-color: ${skill.color};
+                  }
+                `}>
+                  {skill.name}
+                </span>
+                )}
+              </p>
+              <Link
+                to={`/project/${project?.slug?.current}`}
+                asModal
+              >
+                <button>View Samples</button>
+              </Link>
+            </div>
           </div>
           <div className="actions-container flex-middle flex-center flex flex-column">
             <div className="logo">

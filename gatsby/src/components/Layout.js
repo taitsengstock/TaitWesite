@@ -14,7 +14,7 @@ const SiteBorderStyles = styled.div`
   ${mobile} {
     margin: 3rem auto 2rem auto;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1040px) {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }

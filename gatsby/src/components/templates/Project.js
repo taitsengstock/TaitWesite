@@ -10,6 +10,9 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import {breakpoints} from '../../styles/GlobalStyles.js';
+
+const {mobile} = breakpoints
 
 const SliderStyles = styled.div`
   padding: 20px;
@@ -43,7 +46,7 @@ export default function SingleProjectPage({ data: { project } }) {
     arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    dots: false,
+    dots: true,
   };
   
   return (
@@ -71,9 +74,23 @@ export default function SingleProjectPage({ data: { project } }) {
         <Slider
           {...settings}
           ref={(slider) => (customSingleSlider.current = slider)}
+          css={css`
+            .slick-dots {
+              li {
+                button {
+                  box-shadow: none;
+                }
+              }
+            }
+          `}
         >
           {project.imagesGallery.map((galleryImage) => (
-            <Img fluid={galleryImage.asset.fluid} />
+            <Img fluid={galleryImage.asset.fluid} css={css`
+              border-radius: 8px;
+              .gatsby-image-wrapper {
+                display: block;
+              }
+            `}/>
           ))}
         </Slider>
         <FontAwesomeIcon

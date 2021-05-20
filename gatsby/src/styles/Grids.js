@@ -123,9 +123,13 @@ export const OpenTileStyles = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     transition-delay: 0.2s;
+    margin-top: 0;
   }
   .open .image {
     margin-top: -77%;
+  }
+  .closed .image {
+    margin-top: 0%;
   }
   .text-container {
     flex: 1;

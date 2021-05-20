@@ -41,6 +41,7 @@ export default {
               backgroundColor: `rgba(103, 99, 99, 0.75)`,
               display: `flex`,
               justifyContent: `center`,
+              overflowY: 'scroll',
             },
             content: {
               maxWidth: '800px',
@@ -49,6 +50,7 @@ export default {
               width: '100%',
               boxSizing: 'border-box',
               borderRadius: '8px',
+              inset: '40px auto auto'
             },
           },
         },
