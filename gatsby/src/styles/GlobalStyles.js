@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     --black: #2E2E2E;
     --yellow: #dfff00;
     --white: #fff;
-    --grey: #efefef;
+    --grey: #ececee;
     --shadow: 0 1px 24px rgba(30,30,40,0.1);
     --standard-radius: 8px;
   }
