@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Slider from 'react-slick';
@@ -15,33 +15,32 @@ import {breakpoints} from '../../styles/GlobalStyles.js';
 const {mobile} = breakpoints
 
 const SliderStyles = styled.div`
-  padding: 20px;
-  margin-bottom: 20px;
+  margin: 20px 20px 40px;
   position: relative;
-
+  overflow: hidden;
   .slick-slide {
     max-height: 70vh;
   }
   .slick-slide.slick-active.slick-current {
     max-height: 100%;
   }
-  .arrow.prev,
-  .arrow.next {
+   .arrow{
     top: 30vh;
     position: absolute;
+    z-index: 1;
+    transition: all 0.2s ease-in-out;
   }
-  .arrow.prev {
-    left: 0px;
-  }
-  .arrow.next {
-    right: 0px;
+  .slick-dots {
+    position: relative;
+    bottom: 0;
   }
 `;
 
 export default function SingleProjectPage({ data: { project } }) {
+  const [hovered, setHovered] = useState(false)
   const customSingleSlider = useRef();
   const settings = {
-    infinite: false,
+    infinite: true,
     speed: 500,
     arrows: false,
     slidesToShow: 1,
@@ -64,12 +63,19 @@ export default function SingleProjectPage({ data: { project } }) {
           ))}
         </ul>
       </div>
-      <SliderStyles>
+      <SliderStyles       
+        onMouseEnter={() => setHovered(true)} 
+        onMouseLeave={() => setHovered(false)}
+      >
         <FontAwesomeIcon
           icon={faChevronLeft}
           className="arrow prev"
           onClick={() => customSingleSlider.current.slickPrev()}
           type="button"
+          css={css`
+            left: ${hovered ? '40px' : '0'};
+            opacity: ${hovered ? '1' : '0'};
+          `}
         />
         <Slider
           {...settings}
@@ -98,6 +104,10 @@ export default function SingleProjectPage({ data: { project } }) {
           className="arrow next"
           onClick={() => customSingleSlider.current.slickNext()}
           type="button"
+          css={css`
+            right: ${hovered ? '40px' : '0'}; 
+            opacity: ${hovered ? '1' : '0'};
+          `}
         />
       </SliderStyles>
     </div>

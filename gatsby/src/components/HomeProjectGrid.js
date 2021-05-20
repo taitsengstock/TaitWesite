@@ -55,13 +55,14 @@ function SingleProject({ project }) {
         // ref={tileRef}
       >
         <div className="tile-inner">
-          <div className="overlay flex flex-middle" />
+          <div className="overlay flex flex-middle"/>
           <div
             className="image"
             style={{
               backgroundImage: `url(${project.image.asset.url})`,
               backgroundSize: 'cover',
             }}
+            
           />
           <div className="text-container" css={css`
             display: grid;
@@ -104,15 +105,24 @@ function SingleProject({ project }) {
                 </span>
                 )}
               </p>
-              <Link
-                to={`/project/${project?.slug?.current}`}
-                asModal
-              >
-                <button>View Samples</button>
-              </Link>
+              <div>
+                <Link
+                  to={`/project/${project?.slug?.current}`}
+                  asModal
+                  className="button"
+                >
+                  View Samples
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="actions-container flex-middle flex-center flex flex-column">
+          <div 
+          className="actions-container flex-middle flex-center flex flex-column" 
+          onClick={toggleShow}
+          type="button"
+          css={css`
+            cursor: pointer;
+          `}>
             <div className="logo">
               <img src={`${project.logo.asset.url}`} alt={project.name} />
             </div>
@@ -144,8 +154,10 @@ export default function HomeProjectGrid({ projects }) {
         className="arrow prev"
         onClick={() => customSlider.current.slickPrev()}
         type="button"
+        display={customSlider.current === 2 ? "none" : "block"}
+        
       />
-
+      {console.log(customSlider.current)}
       <FontAwesomeIcon
         icon={faChevronRight}
         className="arrow next"
@@ -157,7 +169,7 @@ export default function HomeProjectGrid({ projects }) {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,

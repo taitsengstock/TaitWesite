@@ -12,6 +12,7 @@ const { mobile } = breakpoints
 const GlobalStyles = createGlobalStyle`
   :root {
     --red: #FF4949;
+    --darkRed: #d73131;
     --black: #2E2E2E;
     --yellow: #dfff00;
     --white: #fff;
@@ -34,19 +35,20 @@ const GlobalStyles = createGlobalStyle`
     border-width: 1px;
   }
 
-  button {
+  button, .button {
     background: var(--red);
     color: white;
     border: 0;
     padding: 0.6rem 1rem;
     border-radius: 2px;
+    display: inline-block;
     cursor: pointer;
-    --cast: 2px;
     box-shadow: var(--cast) var(--cast) 0 var(--grey);
     text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.2);
     transition: all 0.2s;
+    text-decoration: none;
     &:hover {
-      --cast: 4px;
+      background: var(--darkRed);
     }
   }
 
