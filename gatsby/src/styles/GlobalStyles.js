@@ -11,6 +11,8 @@ const { mobile } = breakpoints
 
 const GlobalStyles = createGlobalStyle`
   :root {
+    font-size: 10px;
+    // Primary Tokens
     --red: #FF4949;
     --darkRed: #d73131;
     --black: #2E2E2E;
@@ -19,6 +21,41 @@ const GlobalStyles = createGlobalStyle`
     --grey: #ececee;
     --shadow: 0 1px 24px rgba(30,30,40,0.1);
     --standard-radius: 8px;
+    // Secondary tokens
+    --text-color: var(--black);
+    --ghost: var(--grey);
+    --button-radius: calc(var(--standard-radius) / 2);
+    // Font Sizes
+    --font-xsmall: 10px;
+    --font-small: 14px;
+    --font-regular: 16px;
+    --font-large: 10px;
+    --font-xlarge: 20px;
+    --font-xxlarge: 27px;
+    --font-xxxlarge: 60px;
+    ${mobile}{
+      --font-xsmall: 10px;
+      --font-small: 12px;
+      --font-regular: 16px;
+      --font-large: 10px;
+      --font-xlarge: 18px;
+      --font-xxlarge: 19px;
+      --font-xxxlarge: 36px;
+    }
+    //Spacing Tokens
+    --spacing-01:	0.125rem;	
+    --spacing-02:	0.25rem;	
+    --spacing-03:	0.5rem;	
+    --spacing-04:	0.75rem;	
+    --spacing-05:	1rem;
+    --spacing-06:	1.5rem;		
+    --spacing-07:	2rem;	
+    --spacing-08:	2.5rem;		
+    --spacing-09:	3rem;	
+    --spacing-10:	4rem;		
+    --spacing-11:	5rem;	
+    --spacing-12:	6rem;	
+    --spacing-13:	10rem;
   }
   html {
     font-size: 10px;
@@ -27,7 +64,40 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-size: 16px;
+    font-size: var(--font-regular);
+    color: var(--text-color);
+  }
+  
+  h1, .h1{
+    font-size: var(--font-xxxlarge);
+    line-height: 1.3;
+  }
+
+  h2, .h2{
+    font-size: var(--font-xxlarge);
+    line-height: 1.3;
+  }
+
+  h3, .h3{
+    font-size: var(--font-xlarge);
+    line-height: 1.3;
+  }
+
+  h4, .h4{
+    font-size: var(--font-small);
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  body, .p{
+    line-height: 1.3;
+  }
+
+  p{
+    margin-bottom: 0.5em;
+    &:last-child{
+      margin-bottom: 0;
+    }
   }
 
   fieldset {
@@ -36,17 +106,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   button, .button {
-    background: var(--red);
-    color: white;
     border: 0;
-    padding: 0.6rem 1rem;
-    border-radius: 2px;
     display: inline-block;
     cursor: pointer;
-    box-shadow: var(--cast) var(--cast) 0 var(--grey);
-    text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.2);
     transition: all 0.2s;
-    text-decoration: none;
     &:hover {
       background: var(--darkRed);
     }
@@ -123,56 +186,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  h1, .h1{
-    font-size: 60px;
-    line-height: 1.3;
-    ${mobile}{
-      font-size: 36px;
-    }
-    &.serif {
-      font-family: 'Romie', sans-serif;
-    }
-  }
-
-  h2, .h2{
-    font-size: 27px;
-    line-height: 1.3;
-    ${mobile}{
-      font-size: 19px;
-    }
-  }
-
-  h3, .h3{
-    font-size: 20px;
-    line-height: 1.3;
-    ${mobile}{
-      font-size: 18px;
-    }
-  }
-
-  h4, .h4{
-    font-size: 14px;
-    line-height: 1.3;
-    text-transform: uppercase;
-    ${mobile}{
-      font-size: 12px;
-    }
-  }
-
-  body, .p{
-    font-size: 16px;
-    line-height: 1.3;
-    ${mobile}{
-      font-size: 16px;
-    }
-  }
-
-  p{
-    margin-bottom: 0.5em;
-    &:last-child{
-      margin-bottom: 0;
-    }
-  }
+  
 
   ul {
     padding-inline-start: 10px;

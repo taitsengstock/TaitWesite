@@ -62,7 +62,6 @@ function SingleProject({ project }) {
               backgroundImage: `url(${project.image.asset.url})`,
               backgroundSize: 'cover',
             }}
-            
           />
           <div className="text-container" css={css`
             display: grid;

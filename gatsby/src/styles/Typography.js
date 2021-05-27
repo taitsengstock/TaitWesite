@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 import font from '../assets/fonts/frenchfries.woff';
-import montserratLight from '../assets/fonts/Montserrat-Light.ttf';
-import openSansBold from '../assets/fonts/OpenSans-Bold.ttf';
+import montserratLight from './typography.css';
+import openSansBold from './typography.css';
 
 export const breakpoints =  {
   mobile: '@media (max-width: 768px)',
@@ -13,15 +13,6 @@ export const breakpoints =  {
 const { mobile } = breakpoints
 
 const Typography = createGlobalStyle`
-
-  @font-face {
-    font-family: OpenSansBold;
-    src: url(${openSansBold});
-  }
-  @font-face {
-    font-family: Montserrat;
-    src: url(${montserratLight});
-  }
 
   html {
     font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

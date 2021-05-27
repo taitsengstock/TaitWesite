@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{iCTh:function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return u}));var a=t("q1tI"),r=t.n(a);t("85Sb");function u(){return r.a.createElement(r.a.Fragment,null,r.a.createElement("p",null,"Hey I'm Homepage"))}}}]);
-//# sourceMappingURL=component---src-pages-beers-js-b183317d02056ee7f47f.js.map

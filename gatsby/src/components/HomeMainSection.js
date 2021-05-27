@@ -20,7 +20,6 @@ export default function HomeMainSection({ person }) {
           <div className="large-text flex flex-center flex-column">
             <h1>{featuredPerson.name}</h1>
             <p>
-              {/* {featuredPerson.description} */}
               Designing websites using{' '}
               <span className="mark tilt large-text">React!</span>
             </p>

@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeSkillGrid from '../components/HomeSkillGrid';
 import HomeProjectGrid from '../components/HomeProjectGrid';
+import ProjectGrid from '../components/ProjectGrid';
 import HomeLoadingGrid from '../components/HomeLoadingGrid';
 import { HomePageGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
@@ -22,17 +23,10 @@ function FeaturedProjects({ featuredProjects }) {
     <div>
       {!featuredProjects && <HomeLoadingGrid count={3} />}
       {featuredProjects?.length && (
-        <HomeProjectGrid projects={featuredProjects} />
+        <>
+        <ProjectGrid projects={featuredProjects} />
+        </>
       )}
-    </div>
-  );
-}
-function FeaturedSkills({ featuredSkills }) {
-  console.log(featuredSkills);
-  return (
-    <div>
-      {!featuredSkills && <HomeLoadingGrid count={3} />}
-      {featuredSkills?.length && <HomeSkillGrid skills={featuredSkills} />}
     </div>
   );
 }
@@ -50,9 +44,6 @@ export default function HomePage() {
         <div className="container">
           <FeaturedProjects featuredProjects={featuredProjects} />
         </div>
-        {/* <div className="container">
-          <FeaturedSkills featuredSkills={featuredSkills} />
-        </div> */}
       </HomePageGrid>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './src/components/Layout';
+import { ListViewProvider } from './src/components/ListViewContext';
 import { TileContextProvider } from './src/components/TileContext';
 
 export function wrapPageElement({ element, props }) {
@@ -7,5 +8,10 @@ export function wrapPageElement({ element, props }) {
 }
 
 export function wrapRootElement({ element }) {
-  return <TileContextProvider>{element}</TileContextProvider>
+  return <TileContextProvider>
+          <ListViewProvider>
+            {element}
+          </ListViewProvider>
+        </TileContextProvider>
 }
+

@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{"Cuy+":function(n,e,t){"use strict";t.r(e),t.d(e,"default",(function(){return o}));var a=t("q1tI"),c=t.n(a);function o(){return c.a.createElement("div",{className:"container"},c.a.createElement("h1",null,"Contact"),c.a.createElement("p",null,"For now just send me an email at taitsengstock@gmail.com"))}}}]);
-//# sourceMappingURL=component---src-pages-contact-js-b3879d2ba87f061865a2.js.map
