@@ -4,7 +4,7 @@ const ListViewContext = React.createContext();
 
 export const ListViewProvider = ({ children }) => {
     
-    const [view, setView] = useState('carousel')
+    const [view, setView] = useState('tiles')
 
     return(
       <ListViewContext.Provider value={[view, setView]}>

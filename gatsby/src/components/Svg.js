@@ -24,4 +24,16 @@ export const GridlIcon = ({ className }) => (
   </svg>
   )
   
-
+  export const ChevronLeft = ({ className }) => (
+    <svg id="icon" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={className}>
+      <polygon points="10,16 20,6 21.4,7.4 12.8,16 21.4,24.6 20,26 " fill="currentColor"/>
+      <rect id="_x3C_Transparent_Rectangle_x3E_" class="st0" width="32" height="32" />
+    </svg>
+  )
+    
+  export const ChevronRight = ({ className }) => (
+    <svg id="icon" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={className}>
+      <polygon points="22,16 12,26 10.6,24.6 19.2,16 10.6,7.4 12,6 " fill="currentColor"/>
+      <rect id="_x3C_Transparent_Rectangle_x3E_" class="st0" width="32" height="32"/>
+    </svg>
+  )

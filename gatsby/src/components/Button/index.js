@@ -4,16 +4,26 @@ import { Link } from "gatsby"
 
 const Button = ({ children, to, onClick, primary, large, className }) => {
 
+
+  const ButtonCss = ``
+
   if(to){
     return (
       <Link
         to={to}
         className={className}
+        css={css`
+          ${ButtonCss}
+        `}
       >
         <button 
-          className={ large ? 'h2' : 'h3' }
           css={css`
             display: inline-grid;
+            padding: 10px;
+            padding: 6px 16px 8px;
+            background: var(--blue);
+            color: var(--white);
+            font-size: var(--font-small);
           `}
         >
           {children}
@@ -26,6 +36,9 @@ const Button = ({ children, to, onClick, primary, large, className }) => {
       <button
         className={ `${large ? 'h2' : 'h3'} ${className}` }
         onClick={e => onClick(e)}
+        css={css`
+          ${ButtonCss}
+        `}
       >
         {children}
       </button>

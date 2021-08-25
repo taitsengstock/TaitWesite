@@ -2,40 +2,31 @@ import React from 'react';
 import { Link } from 'gatsby';
 import TransitionLink from 'gatsby-plugin-transition-link';
 import styled from 'styled-components';
+import {breakpoints} from '../styles/GlobalStyles.js';
 
-const NavStyles = styled.nav`
-  margin-bottom: 3rem;
-  display: flex;
-  justify-content: flex-end;
-  ul {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
-    align-items: center;
-  }
-  a {
-    font-size: 2rem;
-    text-decoration: none;
-    &:hover {
-      color: var(--red);
-    }
-    &[aria-current='page'] {
-      color: var(--red);
-    }
-  }
-  @media (max-width: 980px) {
-    justify-content: center;
-  }
-`;
+const { mobile } = breakpoints
 
-export default function Nav() {
+
+export default function Nav({className}) {
   return (
-    <NavStyles>
-      <ul>
+    <nav className={className} css={css`
+      display: grid;
+      justify-self: end;
+      padding: 0 var(--spacing-07); 
+      ${mobile}{
+        justify-content: center;
+      }
+    `}>
+      <ul css={css`
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: var(--spacing-05);
+        align-items: center;
+      `}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -43,6 +34,6 @@ export default function Nav() {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
-    </NavStyles>
+    </nav>
   );
 }

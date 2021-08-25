@@ -1,11 +1,21 @@
 import React from 'react';
+import { Section } from './Section';
 
 export default function Footer() {
   return (
-    <footer>
+    <div css={css`
+      height: var(--size-12);
+      display: grid;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+    `}>
+      <div css={css`
+        padding: 0 var(--spacing-07);
+      `}>
       <p className="small-text">
-        &copy; Tait's Website {new Date().getFullYear()}
+        &copy; Tait Sengstock {new Date().getFullYear()}
       </p>
-    </footer>
+      </div>
+    </div>
   );
 }

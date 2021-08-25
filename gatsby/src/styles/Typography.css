@@ -6,3 +6,15 @@
   font-family: Montserrat;
   src: url('../assets/fonts/Montserrat-Light.ttf');
 }
+@font-face {
+  font-family: BaskervilleRegular;
+  src: url('../assets/fonts/LibreBaskerville-Regular.ttf');
+}
+@font-face {
+  font-family: BaskervilleBold;
+  src: url('../assets/fonts/LibreBaskerville-Bold.ttf');
+}
+@font-face {
+  font-family: BaskervilleItalic;
+  src: url('../assets/fonts/LibreBaskerville-Italic.ttf');
+}

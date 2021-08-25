@@ -1,31 +1,29 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { HomeMainStyles } from '../styles/Grids';
+import { Section } from './Section/index.js';
 
-export default function HomeMainSection({ person }) {
+export default function HomeMainSection({ person, className }) {
   return (
-    <div>
+    <>
       {person.map((featuredPerson) => (
-        <HomeMainStyles>
+        <Section className={className}>
           <div>
-            <div>
               <img
                 src={`${featuredPerson.image.asset.url}`}
                 alt={featuredPerson.name}
                 className="round"
               />
-            </div>
           </div>
-          <div className="large-text flex flex-center flex-column">
+          <div >
             <h1>{featuredPerson.name}</h1>
             <p>
               Designing websites using{' '}
-              <span className="mark tilt large-text">React!</span>
+              <span className="mark tilt">React!</span>
             </p>
           </div>
-        </HomeMainStyles>
+        </Section>
       ))}
-    </div>
+    </>
   );
 }

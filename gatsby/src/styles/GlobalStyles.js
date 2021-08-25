@@ -1,3 +1,4 @@
+import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import stripes from '../assets/images/stripes.svg';
 
@@ -7,6 +8,7 @@ export const breakpoints =  {
   desktop: '@media (max-width: 1230px)',
   desktopUp: '@media (min-width: 1025px)'
   }
+
 const { mobile } = breakpoints
 
 const GlobalStyles = createGlobalStyle`
@@ -15,9 +17,11 @@ const GlobalStyles = createGlobalStyle`
     // Primary Tokens
     --red: #FF4949;
     --darkRed: #d73131;
+    --blue: #00077b;
     --black: #2E2E2E;
     --yellow: #dfff00;
     --white: #fff;
+    --light-grey: #fafafc;
     --grey: #ececee;
     --shadow: 0 1px 24px rgba(30,30,40,0.1);
     --standard-radius: 8px;
@@ -25,6 +29,8 @@ const GlobalStyles = createGlobalStyle`
     --text-color: var(--black);
     --ghost: var(--grey);
     --button-radius: calc(var(--standard-radius) / 2);
+    --background-color: var(--light-grey);
+    --border-color: var(--grey);
     // Font Sizes
     --font-xsmall: 10px;
     --font-small: 14px;
@@ -37,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
       --font-xsmall: 10px;
       --font-small: 12px;
       --font-regular: 16px;
-      --font-large: 10px;
+      --font-large: 17px;
       --font-xlarge: 18px;
       --font-xxlarge: 19px;
       --font-xxxlarge: 36px;
@@ -56,16 +62,28 @@ const GlobalStyles = createGlobalStyle`
     --spacing-11:	5rem;	
     --spacing-12:	6rem;	
     --spacing-13:	10rem;
+    //Sizing Tokens
+    --size-01:	0.125rem;	
+    --size-02:	0.25rem;	
+    --size-03:	0.5rem;	
+    --size-04:	0.75rem;	
+    --size-05:	1rem;
+    --size-06:	1.5rem;		
+    --size-07:	2rem;	
+    --size-08:	2.5rem;		
+    --size-09:	3rem;	
+    --size-10:	4rem;		
+    --size-11:	5rem;	
+    --size-12:	6rem;	
+    --size-13:	10rem;
   }
   html {
     font-size: 10px;
-    background-color: #e9e9ea;
-    background: #e9e9ea url(${stripes}); 
+    color: var(--text-color);
+    background-color: var(--background-color);
   }
-
   body {
     font-size: var(--font-regular);
-    color: var(--text-color);
   }
   
   h1, .h1{
@@ -81,6 +99,12 @@ const GlobalStyles = createGlobalStyle`
   h3, .h3{
     font-size: var(--font-xlarge);
     line-height: 1.3;
+  }
+
+  h4, .h4{
+    font-size: var(--font-small);
+    line-height: 1.3;
+    text-transform: uppercase;
   }
 
   h4, .h4{
@@ -111,7 +135,6 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
-      background: var(--darkRed);
     }
   }
 
@@ -132,23 +155,11 @@ const GlobalStyles = createGlobalStyle`
     border: 3px solid var(--white);
   }
 
-  hr {
-    border: 0;
-    height: 8px;
-    background-image: url(${stripes});
-    background-size: 1500px;
-  }
-
   img {
     max-width: 100%;
     width: 100%;
   }
 
-  .tilt {
-    transform: rotate(-2deg);
-    position: relative;
-    display: inline-block;
-  }
   /* Animations  */
   @-webkit-keyframes fade {
       0% { opacity: 1; filter:alpha(opacity=100); }
@@ -186,8 +197,6 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  
-
   ul {
     padding-inline-start: 10px;
     list-style-type: disc;
@@ -195,52 +204,11 @@ const GlobalStyles = createGlobalStyle`
   li {
       list-style-position: inside;
   } 
-  .flex {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-    }
-  .flex-wrap {
-    -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  }
-  .flex-middle {
-    -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center
-  }
-  .flex-end {
-    -webkit-box-pack: end;
-      -ms-flex-pack: end;
-      justify-content: flex-end;
-  }
-  .flex-start {
-    -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-  }
-  .flex-center {
-    -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-  }
-  .flex-column {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
-  }
-  .flex-between {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-  }
-  .pull-right {
-    margin-left: auto;
-  }
+
   .arrow {
     cursor: pointer;
   }
+
   .loading-item {
     background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');
     position: relative;
@@ -259,6 +227,7 @@ const GlobalStyles = createGlobalStyle`
     background-size: 200% 200%;
     border-radius: 8px;
   }
+
   .loading-item.light {
     background: --grey;
     background: linear-gradient(
@@ -268,9 +237,7 @@ const GlobalStyles = createGlobalStyle`
       #efefef 100%
     );
   }
-  .round {
-    border-radius: 50%;
-  }
+
   body.ReactModal__Body--open {
     overflow-y: hidden;
   }
@@ -285,17 +252,6 @@ const GlobalStyles = createGlobalStyle`
 
   .ReactModal__Overlay--before-close{
       opacity: 0;
-  }
-  .container {
-    margin: 4rem 0;
-  }
-  .label {
-    background: var(--grey);
-    display: inline-block;
-    margin-right: 0.5em;
-    padding: 5px 7px;
-    margin-bottom: 0.5em;
-    border-radius: 4px;
   }
 `
 

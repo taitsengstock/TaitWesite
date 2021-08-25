@@ -9,15 +9,22 @@ export default function Sidebar() {
     .title(`Tait's Wesite`)
     .items([
       // create a new sub item
-      S.listItem().title('Home Page').child(
+      S.listItem().title('Design Store').child(
         S.editor()
           .schemaType('storeSettings')
           // make a new document id so we don't have a random string of numbers
           .documentId('downtown')
       ),
+      S.listItem().title('Art Store').child(
+        S.editor()
+          .schemaType('storeSettings')
+          // make a new document id so we don't have a random string of numbers
+          .documentId('a88ed9b8-7922-442d-8abe-adb283a20cd9')
+      ),
       // add in the rest of our document items
       ...S.documentTypeListItems().filter(
         (item) => item.getId() !== 'storeSettings'
       ),
-    ]);
+    ],
+    );
 }

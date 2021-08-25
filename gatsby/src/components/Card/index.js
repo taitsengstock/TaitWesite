@@ -1,31 +1,20 @@
 import React, { useState, useRef } from 'react';
 import useOutsideClick from "../../utils/useOutsideClick"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronDown,
-  faChevronUp,
-  } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby-plugin-modal-routing';
 import {breakpoints} from '../../styles/GlobalStyles.js';
 import Carousel from '../Carousel';
 import { css } from 'styled-components'
+import Button from '../Button/index.js'
 
 const {tablet} = breakpoints
 
-const Card = ({ project }) => {
+const Card = ({ project, type }) => {
   const tileRef = useRef()
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  const mobileToggleOpen = () => {
-    if (window.matchMedia("(max-width: 700px)").matches) {
-    setOpen(!open)
-    } else {
-      return null
-    }
-  };
+  console.log(`project`, project)
   useOutsideClick(tileRef, () => {
-    console.log(open)
     setOpen(false)
   })
 
@@ -34,49 +23,61 @@ const Card = ({ project }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       css={css`
-      padding: var(--spacing-05);
+        border: 1px solid var(--border-color);
+        border-radius: var(--size-05);
+        overflow: hidden; 
+        background-color: ${hovered ? `var(--light-grey)` : `var(--background-color)`};
     `}
     ref={tileRef}
     >
-      <div css={css`
-      `}>
+      <Link 
+      to={`/${type}/${project?.node?.slug?.current}`}
+      >
         <div 
-          onClick={() => setOpen(!open)}
-          css={css`
-            background-image: url(${project?.image?.asset?.url});
-            background-size: cover;
-            height: 100%;
-            position: relative;
-            padding-bottom: 77%;
-        `}>
-          <div css={css`
-            position: absolute;
-            z-index: 3;
-            display: grid;
-            align-items: center;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-          `}>
-              <img 
-                src={`${project?.logo?.asset?.url}`} 
-                alt={project?.name} 
-              />
-          </div>
-        </div>
-        <div css={css`
+        css={css`
           display: grid;
         `}>
-          text box
-          <Link
-            asModal
-            to={`/project/${project?.slug?.current}`}
-          >
-            see more
-          </Link>
+          <div css={css`
+          `}>
+            <div css={css`
+              overflow: hidden;
+            `}>
+              <div css={css`
+                transition: transform 0.3s;
+                transform: ${hovered ? `scale(1.05)` : `scale(1)`};
+              `}>
+                <img
+                  src={`${project?.node?.image?.asset?.url}`}
+                  // alt={person.name}
+                  css={css`display: block;`}
+                />
+              </div>
+            </div>
+            <div css={css`padding: var(--spacing-05); `}>
+              <div css={css`
+                margin-bottom: var(--spacing-05); 
+                display: grid; 
+                grid-template-columns: max-content 1fr;
+                align-items: center;
+              `}>
+                {type === `project` &&
+                  <img
+                  src={`${project?.node?.logoicon?.asset?.url}`}
+                  css={css`
+                    border-radius: 50%;
+                    max-width: var(--size-09);
+                    margin-right: var(--spacing-05);
+                    border: 1px solid var(--grey);
+                  `}
+                />
+                }
+                <h3 css={css``}>{project?.node?.name}</h3>
+              </div>
+              <p css={css`margin-bottom: var(--spacing-05); font-size: var(--font-small);`}>{project?.node?.description}</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
   }

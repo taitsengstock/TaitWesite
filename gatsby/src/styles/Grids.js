@@ -1,16 +1,5 @@
 import styled from 'styled-components';
 
-export const HomePageGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  > div {
-    width: 100%;
-  }
-  .container {
-    margin: 4rem 0;
-  }
-`;
-
 export const ItemsGrid = styled.div`
   display: grid;
   gap: 2rem;

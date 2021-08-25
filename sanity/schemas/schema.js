@@ -4,11 +4,11 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 // Then we give our schema to the builder and provide the result to Sanity
 
-import pizza from './pizza';
-import topping from './topping';
 import person from './person';
 import project from './project';
 import skill from './skill';
+import artwork from './artwork';
+import medium from './medium';
 import storeSettings from './storeSettings';
 
 export default createSchema({
@@ -20,6 +20,8 @@ export default createSchema({
     person,
     project,
     skill,
+    artwork,
+    medium,
     storeSettings,
   ]),
 });

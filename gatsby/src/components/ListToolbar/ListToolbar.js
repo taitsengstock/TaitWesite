@@ -9,12 +9,14 @@ import { CarouselIcon, GridlIcon } from '../Svg';
 import GhostButton from '../GhostButton';
 
 
-export default function ListToolbar() {
+export default function ListToolbar({ className }) {
 
   const [view, setView] = useContext(ListViewContext)
 
   return (
-    <div css={css`
+    <div 
+      className={className}
+      css={css`
         display: grid;
         grid-template-columns: 1fr;
         padding: var(--spacing-05); 
@@ -27,6 +29,7 @@ export default function ListToolbar() {
           css={css`
             height: 32px;
             width: 32px;
+            margin-right: 0.5rem;
         `}>
           <CarouselIcon 
             css={css`
@@ -34,7 +37,6 @@ export default function ListToolbar() {
               height: var(--font-regular);
               display: block;
               color: var(--text-color);
-              margin-right: 0.5rem;
           `}/>
         </GhostButton>
         <GhostButton 
