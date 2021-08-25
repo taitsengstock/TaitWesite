@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import TransitionLink from 'gatsby-plugin-transition-link';
 import styled, { css } from 'styled-components';
 import {breakpoints} from '../styles/GlobalStyles.js';
 

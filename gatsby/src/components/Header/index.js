@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import TransitionLink from 'gatsby-plugin-transition-link';
 import styled from 'styled-components';
 import {breakpoints} from '../../styles/GlobalStyles.js';
 import Nav from '../Nav.js';
