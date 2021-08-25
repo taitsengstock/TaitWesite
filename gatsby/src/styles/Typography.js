@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 import font from '../assets/fonts/frenchfries.woff';
-import montserratLight from './typography.css';
-import openSansBold from './typography.css';
-import BaskervilleBold from './typography.css';
-import BaskervilleRegular from './typography.css';
+import montserratLight from './Typography.css';
+import openSansBold from './Typography.css';
+import BaskervilleBold from './Typography.css';
+import BaskervilleRegular from './Typography.css';
 
 export const breakpoints =  {
   mobile: '@media (max-width: 768px)',

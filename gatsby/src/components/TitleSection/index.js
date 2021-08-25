@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import StoreViewContext from '../StoreViewContext';
-import DropDownSelect from '../dropDownSelect';
+import DropDownSelect from '../DropDownSelect';
 import { Link, navigate } from "gatsby"
 import ThemeContext from '../ThemeContext.js';
 import { css } from 'styled-components';
