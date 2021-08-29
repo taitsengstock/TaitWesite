@@ -22,13 +22,10 @@ export default function Nav({className}) {
         text-align: center;
         list-style: none;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-gap: var(--spacing-05);
         align-items: center;
       `}>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
         <li>
           <Link to="/contact">Contact</Link>
         </li>

@@ -12,7 +12,8 @@
   } from '@fortawesome/free-solid-svg-icons';
   import {breakpoints} from '../../styles/GlobalStyles.js';
   import Sidebar from '../Sidebar.js';
-import Carousel from '../Carousel.js';
+  import Carousel from '../Carousel.js';
+  import Label from '../Label.js'
 
   const {mobile} = breakpoints
 
@@ -39,50 +40,69 @@ import Carousel from '../Carousel.js';
   }
   `;
 
-  export default function SingleProjectPage({ data: { project } }) {
-  const [hovered, setHovered] = useState(false)
+  export default function SingleProjectPage({ data: { project, allSanityProject } }) {
+    const {mobile, tablet} = breakpoints
+    const [hovered, setHovered] = useState(false)
+    console.log(`allSanityProject`, allSanityProject)
+    const projects = allSanityProject.edges
 
-  return (
-    <div css={css`
-      display: grid;
-      grid-template-columns: 25% 1fr;
-      min-height: calc(100vh - (var(--size-13) + var(--size-12)));
-    `}>
-      <Sidebar />
+    return (
       <div css={css`
         display: grid;
-        grid-template-columns: 75% 1fr;
-
+        grid-template-columns: 25% 1fr;
+        min-height: var(--body-height);
+        ${tablet}{
+          grid-template-columns: 1fr;
+        }
       `}>
-        <Carousel 
-          slidesDesktop={1} 
-          slidesMobile={1} 
-          fixedArrows
-          center={false}
-          >
-            {project.imagesGallery.map((galleryImage) => (
-              <Img fluid={galleryImage.asset.fluid} css={css`
-                border-radius: 8px;
-                .gatsby-image-wrapper {
-                  display: block;
-                }
-              `}/>
-            ))}
-        </Carousel>
-        <div>
-          <h1 className="h2">{project.name}</h1>
-          <ul css={css`
-            list-style-type: none;
-            padding-inline-start: 0px;
+        <Sidebar css={css`${tablet}{grid-row: 2;}`} related={projects}/>
+        <div css={css`
+          display: grid;
+          grid-template-columns: clamp(0%, 75%, 90vh) 1fr;
+          padding: var(--spacing-06);
+          grid-column-gap: var(--spacing-05);
+          ${mobile}{
+            grid-template-columns: 1fr;
+          }
+        `}>
+          <div css={css`display: none; ${mobile}{display: block;}`}>
+            <h1 className="h2" css={css`margin-bottom: var(--spacing-07);`}>{project.name}</h1>
+          </div>
+          <Carousel 
+            slidesDesktop={1} 
+            slidesMobile={1} 
+            fixedArrows
+            center={false}
+            >
+              {project.imagesGallery.map((galleryImage) => (
+                <Img fluid={galleryImage.asset.fluid} css={css`
+                  border-radius: 8px;
+                  .gatsby-image-wrapper {
+                    display: block;
+                  }
+                `}/>
+              ))}
+          </Carousel>
+          <div css={css`
+            padding-top: calc(37px + var(--spacing-05));
           `}>
-            {project.skills.map((skill) => (
-              <li key={skill.id} className="label">{skill.name}</li>
-            ))}
-          </ul>
+            <h1 className="h2" css={css`margin-bottom: var(--spacing-07);${mobile}{display: none;}`}>{project.name}</h1>
+            <div css={css`
+              list-style-type: none;
+              padding-inline-start: 0px;
+              margin-bottom: var(--spacing-05);
+            `}>
+              {project.skills.map((skill) => (
+                <Label key={skill.id} className="label">{skill.name}</Label>
+              ))}
+            </div>
+            <p>
+              {project.description}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
   }
 
   // this needs to be dynamic based on the slug passed in via gatsby-node.js
@@ -95,10 +115,48 @@ import Carousel from '../Carousel.js';
         name
         id
       }
+      description
       imagesGallery {
         asset {
           fluid(maxWidth: 800) {
             ...GatsbySanityImageFluid
+          }
+        }
+      }
+    }
+    allSanityProject {
+      edges {
+        node {
+          _type
+          name
+          description
+          skills {
+            name
+            id
+          }
+          image {
+            asset {
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
+              url
+              metadata {
+                lqip
+              }
+            }
+          }
+          slug {
+            current
+          }
+          logo {
+            asset {
+              url
+            }
+          }
+          logoicon {
+            asset {
+              url
+            }
           }
         }
       }

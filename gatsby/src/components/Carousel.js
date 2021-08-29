@@ -5,10 +5,12 @@ import 'slick-carousel/slick/slick-theme.css';
 import styled, { css } from 'styled-components';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { ChevronLeft, ChevronRight } from './Svg.js';
+import Img from 'gatsby-image';
 
 
 export default function Carousel({ children, slidesDesktop, slidesMobile, center }) {
 
+    console.log(`children`, children)
     const [hovered, setHovered] = useState(false)
     const customSlider = useRef();
     const {mobile} = breakpoints
@@ -20,17 +22,16 @@ export default function Carousel({ children, slidesDesktop, slidesMobile, center
       transition: all 0.2s ease-in-out;
       z-index: 3;
       pointer-events: none;
-      padding: var(--spacing-05);
       position: relative;
-      &:after{
-        content: '';
-        background: linear-gradient(var(--white),var(--border-color) 10%,var(--border-color),var(--border-color) 90%,var(--white));
-        width: 1px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        display: block;
-      }
+      // &:after{
+      //   content: '';
+      //   background: linear-gradient(var(--white),var(--border-color) 10%,var(--border-color),var(--border-color) 90%,var(--white));
+      //   width: 1px;
+      //   position: absolute;
+      //   top: 0;
+      //   bottom: 0;
+      //   display: block;
+      // }
       ${mobile}{
         display: none;
       }
@@ -47,16 +48,58 @@ export default function Carousel({ children, slidesDesktop, slidesMobile, center
       // background: #fff;
       border: 1px solid var(--border-color);
     `
+    const SliderCss = css`
+      grid-column: 2/12;
+      min-width: 0;
+      .slick-list {
+        margin-top: calc(37px + var(--spacing-05));
+      }
+      .slick-list, .slick-track{
+        height: 100%;
+      }
+      .slick-slide{
+        transition: 0.2s all;
+        opacity: 0.6;
+        border-radius: var(--size-05);
+        overflow: hidden;
+        /* height: calc(100vh - (69px + 19rem)); */
+      }
+      .slick-slide.slick-active {
+        opacity: 1;
+      }
+      .slick-dots {
+        top: 0;
+        text-align: left;
+        bottom: auto;
+        li {
+          overflow: hidden;
+          border: 1px solid var(--grey);
+          width: 30px;
+          height: 30px;
+          opacity: 0.5;
+          transition: opacity 0.3s;
+          &.slick-active{
+            opacity: 1;
+          }
+        }
 
-
+      }
+    `
     const settings = {
-        dots: false,
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToScroll: 1,
         // centerPadding: "100px",
         slidesToShow: slidesDesktop,
         arrows: center,
+        customPaging: function(i) {
+          return (
+            <a>
+              <Img fluid={children[i]?.props.fluid} />
+            </a>
+          );
+        },
         // centerMode: center,
         responsive: [
           {
@@ -88,7 +131,6 @@ export default function Carousel({ children, slidesDesktop, slidesMobile, center
             position: relative;
             display: grid;
             grid-template-columns: min-content repeat(10, 1fr) min-content;
-            padding: 0 var(--spacing-05);
             margin-bottom: var(--spacing-07);
             height: 100%;
             ${mobile}{
@@ -98,9 +140,7 @@ export default function Carousel({ children, slidesDesktop, slidesMobile, center
         >
           <div css={css`
               ${ArrowContainerStyles}
-              &:after{
-                right: 0px;
-              }
+              padding: 0 var(--spacing-05) 0 0;
             `}>
             <div
               onClick={() => customSlider.current.slickPrev()}
@@ -120,31 +160,12 @@ export default function Carousel({ children, slidesDesktop, slidesMobile, center
           <Slider 
               {...settings} 
               ref={(slider) => (customSlider.current = slider)}
-              css={css`
-                grid-column: 2/12;
-                min-width: 0;
-                .slick-list, .slick-track{
-                  height: 100%;
-                }
-                .slick-slide{
-                  transition: 0.2s all;
-                  opacity: 0.6;
-                  border-radius: var(--size-05);
-                  overflow: hidden;
-                  margin-top: var(--spacing-07);
-                  height: calc(100% - (var(--spacing-07) * 2));
-                }
-                .slick-slide.slick-active {
-                  opacity: 1;
-                }
-              `}>
+              css={SliderCss}>
               {children}
           </Slider>
           <div css={css`
             ${ArrowContainerStyles}
-            &:after{
-              left: 0px;
-            }
+            padding: 0 0 0 var(--spacing-05);
           `}>
             <div
               onClick={() => customSlider.current.slickNext()}

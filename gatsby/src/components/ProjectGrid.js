@@ -12,10 +12,9 @@
   import ListToolbar from './ListToolbar/ListToolbar.js';
   import { Section } from './Section/index.js';
 
-  const {tablet} = breakpoints
-
   export default function ProjectGrid({ projects, className }) {
 
+    const {tablet, mobile} = breakpoints
     const [view, setView] = useContext(ListViewContext)
 
     return (
@@ -49,7 +48,12 @@
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-column-gap: var(--spacing-06);
                 grid-row-gap: var(--spacing-06);
-                margin: var(--spacing-06);
+                ${tablet}{
+                  grid-template-columns: 1fr 1fr;
+                }
+                ${mobile}{
+                  grid-template-columns: 1fr;
+                }
               `}> 
                   {projects.map((project) => (
                     <Card key={project.id} project={project} type={project?.node?._type} />

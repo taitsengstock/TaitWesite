@@ -76,6 +76,7 @@ const GlobalStyles = createGlobalStyle`
     --size-11:	5rem;	
     --size-12:	6rem;	
     --size-13:	10rem;
+    --body-height: calc(100vh - (2px + 16rem));
   }
   html {
     font-size: 10px;
@@ -104,15 +105,12 @@ const GlobalStyles = createGlobalStyle`
   h4, .h4{
     font-size: var(--font-small);
     line-height: 1.3;
-    text-transform: uppercase;
   }
 
-  h4, .h4{
-    font-size: var(--font-small);
+  h5, .h5{
+    font-size: var(--font-xsmall);
     line-height: 1.3;
-    text-transform: uppercase;
   }
-
   body, .p{
     line-height: 1.3;
   }
@@ -144,7 +142,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   /* Scrollbar Styles */
-  body::-webkit-scrollbar {
+  /* body::-webkit-scrollbar {
     width: 12px;
   }
   body::-webkit-scrollbar-track {
@@ -153,7 +151,7 @@ const GlobalStyles = createGlobalStyle`
   body::-webkit-scrollbar-thumb {
     border-radius: 6px;
     border: 3px solid var(--white);
-  }
+  } */
 
   img {
     max-width: 100%;

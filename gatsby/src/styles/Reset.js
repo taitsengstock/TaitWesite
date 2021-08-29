@@ -14,7 +14,6 @@ h4,
 h5,
 h6 {
   font-weight: inherit;
-  font-size: inherit;
 }
 
 p,

@@ -19,10 +19,12 @@ export default function Layout({ children }) {
       <Reset />
       <GlobalStyles />
       <Typography />
-      <Header css={css`
-        `}/>
-        {children}
-      <Footer />
+      <div css={css`overflow-Y: hidden; `}>
+        <Header css={css`
+            `}/>
+            {children}
+          <Footer />
+      </div>
     </>
-  );
+  )
 }

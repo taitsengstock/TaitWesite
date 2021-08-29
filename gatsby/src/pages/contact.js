@@ -7,7 +7,7 @@ export default function ContactPage() {
     <div css={css`
         display: grid;
         grid-template-columns: 25% 1fr;
-        min-height: calc(100vh - (var(--size-13) + var(--size-12)));
+        min-height: var(--body-height);
       `}>
         <Sidebar />
         <div>
