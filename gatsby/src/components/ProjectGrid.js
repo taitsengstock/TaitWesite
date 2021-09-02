@@ -46,8 +46,8 @@
               : <div css={css`
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
-                grid-column-gap: var(--spacing-06);
-                grid-row-gap: var(--spacing-06);
+                grid-column-gap: var(--spacing-07);
+                grid-row-gap: var(--spacing-07);
                 ${tablet}{
                   grid-template-columns: 1fr 1fr;
                 }

@@ -18,3 +18,15 @@
   font-family: BaskervilleItalic;
   src: url('../assets/fonts/LibreBaskerville-Italic.ttf');
 }
+@font-face {
+  font-family: IBMPlexSansLight;
+  src: url('../assets/fonts/IBMPlexSansArabic-Light.ttf');
+}
+@font-face {
+  font-family: IBMPlexSansMedium; 
+  src: url('../assets/fonts/IBMPlexSansArabic-Medium.ttf');
+}
+@font-face {
+  font-family: IBMPlexSansBold; 
+  src: url('../assets/fonts/IBMPlexSansArabic-Bold.ttf');
+}

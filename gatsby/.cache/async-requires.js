@@ -7,6 +7,8 @@ exports.components = {
   "component---src-components-templates-project-js": () => import("./../../../src/components/templates/Project.js" /* webpackChunkName: "component---src-components-templates-project-js" */),
   "component---src-pages-404-js": () => import("./../../../src/pages/404.js" /* webpackChunkName: "component---src-pages-404-js" */),
   "component---src-pages-contact-js": () => import("./../../../src/pages/contact.js" /* webpackChunkName: "component---src-pages-contact-js" */),
-  "component---src-pages-index-js": () => import("./../../../src/pages/index.js" /* webpackChunkName: "component---src-pages-index-js" */)
+  "component---src-pages-design-js": () => import("./../../../src/pages/design.js" /* webpackChunkName: "component---src-pages-design-js" */),
+  "component---src-pages-index-js": () => import("./../../../src/pages/index.js" /* webpackChunkName: "component---src-pages-index-js" */),
+  "component---src-pages-skills-js": () => import("./../../../src/pages/skills.js" /* webpackChunkName: "component---src-pages-skills-js" */)
 }
 

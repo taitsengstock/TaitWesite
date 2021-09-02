@@ -22,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
     --yellow: #dfff00;
     --white: #fff;
     --light-grey: #fafafc;
+    --dark-grey: #C5C5C7;
     --grey: #ececee;
     --shadow: 0 1px 24px rgba(30,30,40,0.1);
     --standard-radius: 8px;
@@ -35,7 +36,7 @@ const GlobalStyles = createGlobalStyle`
     --font-xsmall: 10px;
     --font-small: 14px;
     --font-regular: 16px;
-    --font-large: 10px;
+    --font-large: 18px;
     --font-xlarge: 20px;
     --font-xxlarge: 27px;
     --font-xxxlarge: 60px;
@@ -103,18 +104,20 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h4, .h4{
-    font-size: var(--font-small);
+    font-size: var(--font-regular);
     line-height: 1.3;
   }
 
   h5, .h5{
-    font-size: var(--font-xsmall);
+    font-size: var(--font-small);
     line-height: 1.3;
   }
   body, .p{
     line-height: 1.3;
   }
-
+  p.small{
+    font-size: var(--font-small);
+  }
   p{
     margin-bottom: 0.5em;
     &:last-child{

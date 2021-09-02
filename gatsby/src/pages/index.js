@@ -29,7 +29,7 @@ export default function HomePage({ data }) {
         }
       `}>
         <Sidebar css={css`${tablet}{grid-row: 2;}`} />
-        <ProjectGrid projects={projects} css={css`max-width: 1140px; display: grid; padding: var(--spacing-06);`}/>
+        <ProjectGrid projects={projects} css={css`max-width: 1140px; display: grid; padding: var(--spacing-07);`}/>
       </div>
     </div>
   );

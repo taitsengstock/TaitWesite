@@ -15,16 +15,15 @@ export const breakpoints =  {
 const { mobile } = breakpoints
 
 const Typography = createGlobalStyle`
-
   html {
-    font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: IBMPlexSansLight, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--text-color);
   }
   p, li {
     letter-spacing: 0.5px;
   }
   h1,h2,h3,h4,h5,h6 {
-    font-family: OpenSansBold, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: IBMPlexSansMedium, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: normal;
     margin: 0;
   }
@@ -34,7 +33,6 @@ const Typography = createGlobalStyle`
     /* Chrome renders this weird with this font, so we turn it off */
     text-decoration-skip-ink: none;
   }
-
   .center {
     text-align: center;
   }
@@ -50,8 +48,6 @@ const Typography = createGlobalStyle`
       font-size: 1em;
     }
   }
-
-
 `;
 
 export default Typography;

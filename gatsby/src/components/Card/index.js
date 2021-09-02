@@ -71,7 +71,7 @@ const Card = ({ project, type }) => {
                   `}
                 />
                 }
-                <h3 css={css``}>{project?.node?.name}</h3>
+                <h4 css={css``}>{project?.node?.name}</h4>
               </div>
               <p css={css`margin-bottom: var(--spacing-05); font-size: var(--font-small);`}>{project?.node?.description}</p>
             </div>

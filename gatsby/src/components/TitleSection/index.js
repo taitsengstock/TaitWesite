@@ -35,51 +35,34 @@ export default function TitleSection({ person, className }) {
         grid-column-gap: var(--spacing-05);
       `}
     >
-      <Link css={css`
-        border-right: 1px solid var(--grey);
-        padding: var(--spacing-05);
-        border-radius: 300px 0 0 300px;
-        &:hover{
-            background: var(--light-grey);
-            
-          }
-        `}
-        to={'/'}
-      >
         <div css={css`
           display: grid;
-          grid-template-columns: var(--size-12) max-content;
+          grid-template-columns: max-content max-content;
           align-items: center;
+          padding: 0 var(--spacing-05);
         `}>
-          <div css={css`margin-right: var(--spacing-05);`}>
-              <img
-                src={`${person.image.asset.url}`}
-                alt={person.name}
-                css={css`
-                  border-radius: 50%;
-                  display: block;
-                `}
-              />
-          </div> 
-          <div>
-            <h1 className="h3">{person.name}</h1>
-          </div>
+          <Link to={'/'} >
+            <div css={css`display: flex; align-items: center;`}>
+              <h3 css={css`color: var(--dark-grey);`}>
+                {person.name}/
+              </h3>
+            </div>
+          </Link>
+          <DropDownSelect 
+            options={[
+              {
+                id: 'art',
+                name: 'art'
+              },
+              {
+                id: 'design',
+                name: 'design'
+              }
+            ]}
+            selectedOption={storeView}
+            onUpdate={selected => changeStoreView(selected)}
+          />
         </div>
-      </Link>
-      <DropDownSelect 
-        options={[
-          {
-            id: 'art',
-            name: 'art'
-          },
-          {
-            id: 'design',
-            name: 'design'
-          }
-        ]}
-        selectedOption={storeView}
-        onUpdate={selected => changeStoreView(selected)}
-      />
     </div>
   );
 }

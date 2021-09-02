@@ -19,8 +19,9 @@ const Theme = createGlobalStyle`
     html {
       /* font-family: ${props => (props.theme === 'design' ? 'Montserrat, -apple-system' : 'BaskervilleRegular, -apple-system')}; */
     }
-    h1,h2,h3,h4,h5,h6 {
-      font-family: ${props => (props.theme === 'design' ? 'OpenSansBold, -apple-system' : 'BaskervilleRegular, -apple-system')}; 
+    h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+      font-family: ${props => (props.theme === 'design' ? 'IBMPlexSansMedium, -apple-system' : 'BaskervilleRegular, -apple-system')}; 
+      letter-spacing: 0.02em;
   }
 `
 

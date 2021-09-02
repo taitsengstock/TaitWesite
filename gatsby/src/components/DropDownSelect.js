@@ -8,6 +8,7 @@ const  DropDownSelect = ({ className, options, selectedOption, onUpdate }) => {
 
   const [selected, setSelected] = useState(selectedOption)
   const [open, setOpen] = useState(false)
+  const [init, setInit] = useState(false)
 
   const setSelectedOption = (option) => {
     setSelected(option)
@@ -15,9 +16,12 @@ const  DropDownSelect = ({ className, options, selectedOption, onUpdate }) => {
   }
 
   useEffect(()=> {
-    if (onUpdate && selected) {
-      onUpdate(selected)
+    if (init){
+      if (onUpdate && selected) {
+        onUpdate(selected)
+      }
     }
+    setInit(true)
   }, [selected])
   
   return (
@@ -27,9 +31,10 @@ const  DropDownSelect = ({ className, options, selectedOption, onUpdate }) => {
         css={css`
           display: grid;
           grid-template-columns: 1fr 1fr;
+          align-items: center;
         `}
       >
-        {selected} 
+        <span className='h3'>{selected}</span>
         <ChevronLeft css={css`
           width: var(--font-regular);
           height: var(--font-regular);

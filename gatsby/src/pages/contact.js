@@ -10,7 +10,7 @@ export default function ContactPage() {
         min-height: var(--body-height);
       `}>
         <Sidebar />
-        <div>
+        <div css={css`max-width: 1140px; padding: var(--spacing-07);`}>
           <h1>Contact</h1>
           <p>For now just send me an email at taitsengstock@gmail.com</p>
         </div>
