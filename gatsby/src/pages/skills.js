@@ -8,9 +8,7 @@ import {breakpoints} from '../styles/GlobalStyles.js';
 
 export default function SkillsPage({ data }) {
 
-  const [storeView, setStoreView] = useContext(StoreViewContext)
   const {tablet, mobile} = breakpoints
-  const projects = storeView === `design` ? data?.allSanityProject?.edges : data?.allSanityArtwork?.edges
 
   return (
     <div>

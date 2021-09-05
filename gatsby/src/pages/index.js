@@ -1,35 +1,39 @@
-import React, { useContext } from 'react';
-import ProjectGrid from '../components/ProjectGrid';
-import HomeLoadingGrid from '../components/HomeLoadingGrid';
-import useLatestData from '../utils/useLatestData';
-import HomeMainSection from '../components/HomeMainSection';
-import HomeLoadingMainSection from '../components/HomeLoadingMainSection';
-import { Section } from '../components/Section';
+import React, { useContext, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import { graphql } from 'gatsby';
-import StoreViewContext from '../components/StoreViewContext';
 import {breakpoints} from '../styles/GlobalStyles.js';
+import { useSiteState } from "../context/siteContext"
 
 
 export default function HomePage({ data }) {
 
-  const [storeView, setStoreView] = useContext(StoreViewContext)
-  const {tablet, mobile} = breakpoints
-  // console.log(`data`, data)
-  const projects = storeView === `design` ? data?.allSanityProject?.edges : data?.allSanityArtwork?.edges
 
+  const {tablet, mobile} = breakpoints
+
+
+  const [siteState, setSiteState] = useSiteState()
+
+  useEffect(()=> {
+    setSiteState(prevState => ({
+      ...prevState,
+      pageTitle: `home`,
+      storeView: `home`,
+    }))
+  }, [])
   return (
     <div>
       <div css={css`
         display: grid;
-        grid-template-columns: 25% 1fr;
+        grid-template-columns: max-content 1fr;
         min-height: var(--body-height);
         ${tablet}{
           grid-template-columns: 1fr;
         }
       `}>
         <Sidebar css={css`${tablet}{grid-row: 2;}`} />
-        <ProjectGrid projects={projects} css={css`max-width: 1140px; display: grid; padding: var(--spacing-07);`}/>
+        <div css={css`max-width: 1140px; padding: var(--spacing-07);`}>
+          Home
+        </div>
       </div>
     </div>
   );

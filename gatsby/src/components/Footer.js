@@ -4,7 +4,7 @@ import { Section } from './Section';
 export default function Footer() {
   return (
     <div css={css`
-      height: var(--size-12);
+      height: var(--size-11);
       display: grid;
       align-items: center;
       border-top: 1px solid var(--border-color);

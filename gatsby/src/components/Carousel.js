@@ -10,7 +10,6 @@ import Img from 'gatsby-image';
 
 export default function Carousel({ children, slidesDesktop, slidesMobile, center }) {
 
-    console.log(`children`, children)
     const [hovered, setHovered] = useState(false)
     const customSlider = useRef();
     const {mobile} = breakpoints
@@ -131,7 +130,6 @@ export default function Carousel({ children, slidesDesktop, slidesMobile, center
             position: relative;
             display: grid;
             grid-template-columns: min-content repeat(10, 1fr) min-content;
-            margin-bottom: var(--spacing-07);
             height: 100%;
             ${mobile}{
               grid-template-columns: minmax(0, 1fr);

@@ -22,9 +22,6 @@ function FeaturedPerson({ person }) {
 
 export default function Header({ className }) {
   
-  // const { featuredPerson } = useLatestData();
-  const [storeView, setStoreView] = useContext(StoreViewContext)
-
   const headerData = useStaticQuery(graphql`
     query {
       allSanityPerson {
@@ -41,7 +38,7 @@ export default function Header({ className }) {
   `)
 
   const people = headerData.allSanityPerson.nodes
-  console.log(people)
+
 
   return (
     <div 
@@ -49,7 +46,7 @@ export default function Header({ className }) {
       css={css`
         display: grid;
         border-bottom: 1px solid var(--grey);
-        height: var(--size-13);
+        height: var(--size-12);
       `}
     >
       

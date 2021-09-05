@@ -77,7 +77,7 @@ const GlobalStyles = createGlobalStyle`
     --size-11:	5rem;	
     --size-12:	6rem;	
     --size-13:	10rem;
-    --body-height: calc(100vh - (2px + 16rem));
+    --body-height: calc(100vh - (2px + 11rem));
   }
   html {
     font-size: 10px;

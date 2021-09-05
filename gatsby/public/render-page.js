@@ -1677,7 +1677,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_components_ListViewContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/components/ListViewContext */ "./src/components/ListViewContext.js");
 /* harmony import */ var _src_components_TileContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/components/TileContext */ "./src/components/TileContext.js");
 /* harmony import */ var _src_components_StoreViewContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/components/StoreViewContext */ "./src/components/StoreViewContext.js");
-/* harmony import */ var _src_components_ThemeContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/components/ThemeContext */ "./src/components/ThemeContext.js");
+/* harmony import */ var _src_context_siteContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/context/siteContext */ "./src/context/siteContext.js");
 
 
 
@@ -1691,7 +1691,7 @@ function wrapPageElement(_ref) {
 }
 function wrapRootElement(_ref2) {
   var element = _ref2.element;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_ThemeContext__WEBPACK_IMPORTED_MODULE_5__["ThemeContextProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_StoreViewContext__WEBPACK_IMPORTED_MODULE_4__["StoreViewProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_TileContext__WEBPACK_IMPORTED_MODULE_3__["TileContextProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_ListViewContext__WEBPACK_IMPORTED_MODULE_2__["ListViewProvider"], null, element)))));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_context_siteContext__WEBPACK_IMPORTED_MODULE_5__["SiteStore"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_StoreViewContext__WEBPACK_IMPORTED_MODULE_4__["StoreViewProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_TileContext__WEBPACK_IMPORTED_MODULE_3__["TileContextProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_ListViewContext__WEBPACK_IMPORTED_MODULE_2__["ListViewProvider"], null, element)))));
 }
 
 /***/ }),
@@ -36561,33 +36561,50 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _StyledButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("button").withConfig({
   displayName: "DropDownSelect___StyledButton"
-})(["display:grid;grid-template-columns:1fr 1fr;align-items:center;"]);
+})(["display:grid;grid-template-columns:max-content max-content;;align-items:center;"]);
+
+var _StyledSpan = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("span").withConfig({
+  displayName: "DropDownSelect___StyledSpan"
+})(["font-size:", ";"], function (p) {
+  return p._css;
+});
 
 var _StyledChevronLeft = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_Svg_js__WEBPACK_IMPORTED_MODULE_4__["ChevronLeft"]).withConfig({
   displayName: "DropDownSelect___StyledChevronLeft"
-})(["width:var(--font-regular);height:var(--font-regular);display:block;transition:0.3s transform;transform:", ";"], function (p) {
-  return p._css;
+})(["width:var(--font-regular);height:var(--font-regular);display:block;transition:0.3s transform;transform:", ";margin-left:var(--spacing-01);"], function (p) {
+  return p._css2;
 });
 
 var _StyledDiv = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "DropDownSelect___StyledDiv"
-})(["position:relative;"]);
+})(["position:", ";"], function (p) {
+  return p._css3;
+});
 
 var _StyledDiv2 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "DropDownSelect___StyledDiv2"
-})(["display:grid;position:absolute;background-color:var(--white);opacity:", ";pointer-events:", ";"], function (p) {
-  return p._css2;
+})(["display:grid;position:absolute;background-color:var(--white);opacity:", ";pointer-events:", ";width:", ";margin-top:var(--spacing-05);top:100%;left:0;z-index:2;"], function (p) {
+  return p._css4;
 }, function (p) {
-  return p._css3;
+  return p._css5;
+}, function (p) {
+  return p._css6;
 });
+
+var _StyledButton2 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("button").withConfig({
+  displayName: "DropDownSelect___StyledButton2"
+})(["text-align:left;padding:var(--spacing-05);:hover{background:var(--hover);}"]);
 
 var DropDownSelect = function DropDownSelect(_ref) {
   var className = _ref.className,
       options = _ref.options,
       selectedOption = _ref.selectedOption,
-      onUpdate = _ref.onUpdate;
+      onUpdate = _ref.onUpdate,
+      modeSelector = _ref.modeSelector;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(selectedOption),
       selected = _useState[0],
@@ -36597,29 +36614,43 @@ var DropDownSelect = function DropDownSelect(_ref) {
       open = _useState2[0],
       setOpen = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      init = _useState3[0],
+      setInit = _useState3[1];
+
   var setSelectedOption = function setSelectedOption(option) {
     setSelected(option);
     setOpen(false);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (onUpdate && selected) {
-      onUpdate(selected);
+    if (init) {
+      if (onUpdate && selected) {
+        onUpdate(selected);
+      }
     }
+
+    setInit(true);
   }, [selected]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledButton, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: className
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledButton, {
     onClick: function onClick() {
       return setOpen(!open);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
-    className: "h3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledSpan, {
+    className: "h3",
+    _css: modeSelector ? "var(--font-large)" : "inherit"
   }, selected), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledChevronLeft, {
-    _css: open ? "rotate(90deg)" : "rotate(270deg)"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv2, {
-    _css2: open ? "1" : "0",
-    _css3: open ? "all" : "none"
+    _css2: open ? "rotate(90deg)" : "rotate(270deg)"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv, {
+    _css3: modeSelector ? "unset" : "relative"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv2, {
+    _css4: open ? "1" : "0",
+    _css5: open ? "all" : "none",
+    _css6: modeSelector ? "100%" : "auto"
   }, options === null || options === void 0 ? void 0 : options.map(function (option) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledButton2, {
       onClick: function onClick() {
         return setSelectedOption(option.name);
       },
@@ -36666,7 +36697,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _StyledDiv = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "Footer___StyledDiv"
-})(["height:var(--size-12);display:grid;align-items:center;border-top:1px solid var(--border-color);"]);
+})(["height:var(--size-11);display:grid;align-items:center;border-top:1px solid var(--border-color);"]);
 
 var _StyledDiv2 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "Footer___StyledDiv2"
@@ -36725,7 +36756,7 @@ function FeaturedPerson(_ref) {
 
 var _StyledDiv = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "Header___StyledDiv"
-})(["display:grid;border-bottom:1px solid var(--grey);height:var(--size-13);"]);
+})(["display:grid;border-bottom:1px solid var(--grey);height:var(--size-12);"]);
 
 var _StyledNav = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_Nav_js__WEBPACK_IMPORTED_MODULE_5__["default"]).withConfig({
   displayName: "Header___StyledNav"
@@ -36741,7 +36772,6 @@ function Header(_ref2) {
 
   var headerData = _public_page_data_sq_d_4085245902_json__WEBPACK_IMPORTED_MODULE_1__.data;
   var people = headerData.allSanityPerson.nodes;
-  console.log(people);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_StyledDiv, {
     className: className
   }, people.map(function (person) {
@@ -37046,41 +37076,6 @@ var ChevronRight = function ChevronRight(_ref4) {
 
 /***/ }),
 
-/***/ "./src/components/ThemeContext.js":
-/*!****************************************!*\
-  !*** ./src/components/ThemeContext.js ***!
-  \****************************************/
-/*! exports provided: ThemeContextProvider, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeContextProvider", function() { return ThemeContextProvider; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.esm.js");
-/* harmony import */ var _styles_Theme_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/Theme.js */ "./src/styles/Theme.js");
-
-
-
-var ThemeContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext();
-var ThemeContextProvider = function ThemeContextProvider(_ref) {
-  var children = _ref.children;
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('design'),
-      theme = _useState[0],
-      setTheme = _useState[1];
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ThemeContext.Provider, {
-    value: [theme, setTheme]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_Theme_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    theme: theme
-  }), children);
-};
-/* harmony default export */ __webpack_exports__["default"] = (ThemeContext);
-
-/***/ }),
-
 /***/ "./src/components/TileContext.js":
 /*!***************************************!*\
   !*** ./src/components/TileContext.js ***!
@@ -37128,7 +37123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _StoreViewContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../StoreViewContext */ "./src/components/StoreViewContext.js");
 /* harmony import */ var _DropDownSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../DropDownSelect */ "./src/components/DropDownSelect.js");
 /* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
-/* harmony import */ var _ThemeContext_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ThemeContext.js */ "./src/components/ThemeContext.js");
+/* harmony import */ var _context_siteContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/siteContext */ "./src/context/siteContext.js");
 
 
 
@@ -37146,7 +37141,7 @@ var _StyledDiv = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"
 
 var _StyledDiv2 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "TitleSection___StyledDiv2"
-})(["display:grid;grid-template-columns:max-content max-content;align-items:center;padding:0 var(--spacing-05);"]);
+})(["display:grid;grid-template-columns:max-content max-content;align-items:center;padding:0 var(--spacing-05);position:relative;"]);
 
 var _StyledDiv3 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "TitleSection___StyledDiv3"
@@ -37154,31 +37149,37 @@ var _StyledDiv3 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default
 
 var _StyledH = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("h3").withConfig({
   displayName: "TitleSection___StyledH"
-})(["color:var(--dark-grey);"]);
+})(["color:var(--dark-grey);font-size:var(--font-large);"]);
 
 function TitleSection(_ref) {
   var person = _ref.person,
       className = _ref.className;
 
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_ThemeContext_js__WEBPACK_IMPORTED_MODULE_5__["default"]),
-      theme = _useContext[0],
-      setTheme = _useContext[1];
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_StoreViewContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
+      storeView = _useContext[0],
+      setStoreView = _useContext[1];
 
   var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_StoreViewContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
-      storeView = _useContext2[0],
-      setStoreView = _useContext2[1];
+      siteContext = _useContext2[0],
+      setSiteContext = _useContext2[1];
 
   var changeStoreView = function changeStoreView(selected) {
-    Object(gatsby__WEBPACK_IMPORTED_MODULE_4__["navigate"])('/');
+    Object(gatsby__WEBPACK_IMPORTED_MODULE_4__["navigate"])("/" + selected);
     setStoreView(selected);
+    setSiteState(function (prevState) {
+      return Object.assign({}, prevState, {
+        pageTitle: selected,
+        storeView: selected,
+        theme: selected
+      });
+    });
   };
 
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    setTheme(storeView);
-  }, [storeView]);
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    console.log("theme", theme);
-  }, [theme]);
+  var _useSiteState = Object(_context_siteContext__WEBPACK_IMPORTED_MODULE_5__["useSiteState"])(),
+      siteState = _useSiteState[0],
+      setSiteState = _useSiteState[1];
+
+  console.log("siteState", siteState);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv, {
     className: className
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv2, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_4__["Link"], {
@@ -37191,12 +37192,86 @@ function TitleSection(_ref) {
       id: 'design',
       name: 'design'
     }],
-    selectedOption: storeView,
+    selectedOption: siteState === null || siteState === void 0 ? void 0 : siteState.storeView,
     onUpdate: function onUpdate(selected) {
       return changeStoreView(selected);
-    }
+    },
+    modeSelector: true
   })));
 }
+
+/***/ }),
+
+/***/ "./src/context/siteContext.js":
+/*!************************************!*\
+  !*** ./src/context/siteContext.js ***!
+  \************************************/
+/*! exports provided: SiteContext, SiteStore, HeaderTitle, useSiteState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SiteContext", function() { return SiteContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SiteStore", function() { return SiteStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderTitle", function() { return HeaderTitle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useSiteState", function() { return useSiteState; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
+/* harmony import */ var _styles_Theme_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/Theme.js */ "./src/styles/Theme.js");
+
+
+
+var initialSiteState = {
+  pageTitle: null,
+  storeView: "",
+  theme: ""
+};
+var SiteContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({
+  siteState: initialSiteState,
+  setSiteState: undefined
+});
+var SiteStore = function SiteStore(_ref) {
+  var children = _ref.children;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initialSiteState),
+      siteState = _useState[0],
+      setSiteState = _useState[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SiteContext.Provider, {
+    value: {
+      siteState: siteState,
+      setSiteState: setSiteState
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_Theme_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    theme: siteState.theme
+  }), children);
+}; //component that updates the header title
+
+var HeaderTitle = function HeaderTitle(_ref2) {
+  var title = _ref2.title;
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(SiteContext),
+      siteState = _useContext.siteState,
+      setSiteState = _useContext.setSiteState;
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useLayoutEffect"])(function () {
+    setSiteState(function (prevState) {
+      return Object.assign({}, prevState, {
+        pageTitle: title
+      });
+    }); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title]);
+  return null;
+}; // hook to access siteState globally
+
+var useSiteState = function useSiteState() {
+  var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(SiteContext),
+      siteState = _useContext2.siteState,
+      setSiteState = _useContext2.setSiteState;
+
+  return [siteState, setSiteState];
+};
 
 /***/ }),
 
@@ -37230,7 +37305,7 @@ var breakpoints = {
   desktopUp: '@media (min-width: 1025px)'
 };
 var mobile = breakpoints.mobile;
-var GlobalStyles = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--black);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 16rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"], ["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--black);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 16rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"])), mobile);
+var GlobalStyles = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--black);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 11rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"], ["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--black);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 11rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"])), mobile);
 /* harmony default export */ __webpack_exports__["default"] = (GlobalStyles);
 
 /***/ }),
@@ -37283,10 +37358,12 @@ var breakpoints = {
   desktopUp: '@media (min-width: 1025px)'
 };
 var mobile = breakpoints.mobile;
-var Theme = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    :root {\n      --text-color: ", ";\n      --background-color: ", ";\n    }\n    html {\n      /* font-family: ", "; */\n    }\n    h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {\n      font-family: ", "; \n      letter-spacing: 0.02em;\n  }\n"])), function (props) {
+var Theme = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    :root {\n      --text-color: ", ";\n      --background-color: ", ";\n      --hover: ", ";\n    }\n    html {\n      /* font-family: ", "; */\n    }\n    h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {\n      font-family: ", "; \n      letter-spacing: 0.02em;\n  }\n"])), function (props) {
   return props.theme === 'design' ? 'var(--black)' : 'var(--black)';
 }, function (props) {
   return props.theme === 'design' ? 'var(--white)' : 'var(--light-grey)';
+}, function (props) {
+  return props.theme === 'design' ? 'var(--light-grey)' : 'var(--grey)';
 }, function (props) {
   return props.theme === 'design' ? 'Montserrat, -apple-system' : 'BaskervilleRegular, -apple-system';
 }, function (props) {
@@ -37340,7 +37417,7 @@ var breakpoints = {
   desktopUp: '@media (min-width: 1025px)'
 };
 var mobile = breakpoints.mobile;
-var Typography = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n\n  html {\n    font-family: IBMPlexSansLight, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    color: var(--text-color);\n  }\n  p, li {\n    letter-spacing: 0.5px;\n  }\n  h1,h2,h3,h4,h5,h6 {\n    font-family: IBMPlexSansMedium, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    font-weight: normal;\n    margin: 0;\n  }\n  a {\n    color: var(--text-color);\n    text-decoration-color: var(--text-decoration-color);\n    /* Chrome renders this weird with this font, so we turn it off */\n    text-decoration-skip-ink: none;\n  }\n\n  .center {\n    text-align: center;\n  }\n  .tilt {\n    transform: rotate(-2deg);\n  }\n  .large-text {\n    font-size: 1.4em;\n  }\n  .small-text {\n    font-size: 0.8em;\n    ", " {\n      font-size: 1em;\n    }\n  }\n\n\n"])), mobile);
+var Typography = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  html {\n    font-family: IBMPlexSansLight, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    color: var(--text-color);\n  }\n  p, li {\n    letter-spacing: 0.5px;\n  }\n  h1,h2,h3,h4,h5,h6 {\n    font-family: IBMPlexSansMedium, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    font-weight: normal;\n    margin: 0;\n  }\n  a {\n    color: var(--text-color);\n    text-decoration-color: var(--text-decoration-color);\n    /* Chrome renders this weird with this font, so we turn it off */\n    text-decoration-skip-ink: none;\n  }\n  .center {\n    text-align: center;\n  }\n  .tilt {\n    transform: rotate(-2deg);\n  }\n  .large-text {\n    font-size: 1.4em;\n  }\n  .small-text {\n    font-size: 0.8em;\n    ", " {\n      font-size: 1em;\n    }\n  }\n"])), mobile);
 /* harmony default export */ __webpack_exports__["default"] = (Typography);
 
 /***/ }),

@@ -9,6 +9,7 @@ exports.components = {
   "component---src-components-templates-artwork-js": hot(preferDefault(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/src/components/templates/Artwork.js"))),
   "component---src-components-templates-project-js": hot(preferDefault(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/src/components/templates/Project.js"))),
   "component---src-pages-404-js": hot(preferDefault(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/src/pages/404.js"))),
+  "component---src-pages-art-js": hot(preferDefault(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/src/pages/art.js"))),
   "component---src-pages-contact-js": hot(preferDefault(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/src/pages/contact.js"))),
   "component---src-pages-design-js": hot(preferDefault(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/src/pages/design.js"))),
   "component---src-pages-index-js": hot(preferDefault(require("/Users/taitsengstock/Documents/GitHub/TaitWesite/gatsby/src/pages/index.js"))),

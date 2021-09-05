@@ -13,7 +13,6 @@ const Card = ({ project, type }) => {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  console.log(`project`, project)
   useOutsideClick(tileRef, () => {
     setOpen(false)
   })

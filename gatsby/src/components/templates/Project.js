@@ -59,7 +59,7 @@
         <div css={css`
           display: grid;
           grid-template-columns: clamp(0%, 75%, 90vh) 1fr;
-          padding: var(--spacing-06);
+          padding: var(--spacing-07);
           grid-column-gap: var(--spacing-05);
           ${mobile}{
             grid-template-columns: 1fr;

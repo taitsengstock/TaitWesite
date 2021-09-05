@@ -1,28 +1,48 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import StoreViewContext from '../StoreViewContext';
 import DropDownSelect from '../DropDownSelect';
 import { Link, navigate } from "gatsby"
-import ThemeContext from '../ThemeContext.js';
 import { css } from 'styled-components';
+import { useSiteState } from "../../context/siteContext"
 
 
 export default function TitleSection({ person, className }) {
 
-  const [theme, setTheme] = useContext(ThemeContext)
-  const [storeView, setStoreView] = useContext(StoreViewContext)
+  const [siteState, setSiteState] = useSiteState()
+  const [selectedOption, setSelectedOption] = useState()
 
   const changeStoreView = (selected) => {
-    navigate('/')
-    setStoreView(selected)
+    if (selected === `home`) {
+      return
+    } else {
+      setSiteState(prevState => ({
+        ...prevState,
+        pageTitle: selected,
+        storeView: selected,
+        theme: selected,
+      }))
+      navigate(`/${selected}`)
+    }
   }
 
-  useEffect(() => {
-    setTheme(storeView)
-  }, [storeView])
+  const navigateHome = () => {
+    setSiteState(prevState => ({
+      ...prevState,
+      pageTitle: `home`,
+      storeView: `home`,
+      theme: `design`,
+    }))
+    navigate(`/`)
+  }
 
-  useEffect(() => {
-    console.log(`theme`, theme)
-  }, [theme])
+  useEffect(()=> {
+    setSelectedOption(siteState.storeView)
+    console.log(`siteState`, siteState)
+  }, [siteState])
+
+  useEffect(()=> {
+    console.log(`selectedOption`, selectedOption)
+  }, [selectedOption])
 
   return (
     <div 
@@ -40,28 +60,34 @@ export default function TitleSection({ person, className }) {
           grid-template-columns: max-content max-content;
           align-items: center;
           padding: 0 var(--spacing-05);
+          position: relative;
         `}>
-          <Link to={'/'} >
+          <button onClick={() => navigateHome()} >
             <div css={css`display: flex; align-items: center;`}>
-              <h3 css={css`color: var(--dark-grey);`}>
-                {person.name}/
+              <h3 css={css`color: var(--dark-grey); font-size: var(--font-large);`}>
+                {person.name}{siteState.storeView && `/`}
               </h3>
             </div>
-          </Link>
-          <DropDownSelect 
-            options={[
-              {
-                id: 'art',
-                name: 'art'
-              },
-              {
-                id: 'design',
-                name: 'design'
-              }
-            ]}
-            selectedOption={storeView}
-            onUpdate={selected => changeStoreView(selected)}
-          />
+          </button>
+          {selectedOption &&
+            <DropDownSelect 
+              options={[
+                {
+                  id: 'art',
+                  name: 'art'
+                },
+                {
+                  id: 'design',
+                  name: 'design'
+                }
+              ]}
+              selectedOption={selectedOption}
+              onUpdate={selected => changeStoreView(selected)}
+              modeSelector
+            >
+              {console.log(`selectedOption from dom`, selectedOption)}
+            </DropDownSelect>
+          }
         </div>
     </div>
   );

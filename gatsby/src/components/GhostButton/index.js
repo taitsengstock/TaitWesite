@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { Link } from "gatsby"
 
-const Button = ({ children, to, onClick, large, className }) => {
+const GhostButton = ({ children, to, onClick, large, className }) => {
 
   const GhostButtonCss = `
     display: inline-grid;
@@ -24,7 +24,7 @@ const Button = ({ children, to, onClick, large, className }) => {
         <button 
           className={ large ? 'h2' : 'h3' }
           css={css`
-          ${GhostButtonCss}
+            ${GhostButtonCss}
           `}
         >
           {children}
@@ -50,7 +50,7 @@ const Button = ({ children, to, onClick, large, className }) => {
   }
 }
 
-Button.propTypes = {
+GhostButton.propTypes = {
   primary: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.string,
@@ -61,8 +61,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
 }
 
-Button.defaultProps = {
+GhostButton.defaultProps = {
 }
 
 
-export default Button
+export default GhostButton

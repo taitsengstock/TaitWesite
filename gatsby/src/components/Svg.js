@@ -37,3 +37,21 @@ export const GridlIcon = ({ className }) => (
       <rect id="_x3C_Transparent_Rectangle_x3E_" class="st0" width="32" height="32"/>
     </svg>
   )
+
+  export const Collapse = ({ className }) => (
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+      <path d="M28 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V26C2 26.5304 2.21071 27.0391 2.58579 27.4142C2.96086 27.7893 3.46957 28 4 28H28C28.5304 28 29.0391 27.7893 29.4142 27.4142C29.7893 27.0391 30 26.5304 30 26V6C30 5.46957 29.7893 4.96086 29.4142 4.58579C29.0391 4.21071 28.5304 4 28 4ZM4 6H13V26H4V6ZM28 26H15V6H28V26Z" fill="currentColor"/>
+      <path d="M6 16.0001L9.4 12.6002L10.8 14.0001L8.8 16.0001L10.8 18L9.4 19.4L6 16.0001Z" fill="currentColor"/>
+    </svg>
+  )
+
+  export const Expand = ({ className }) => (
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+      <path d="M28 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V26C2 26.5304 2.21071 27.0391 2.58579 27.4142C2.96086 27.7893 3.46957 28 4 28H28C28.5304 28 29.0391 27.7893 29.4142 27.4142C29.7893 27.0391 30 26.5304 30 26V6C30 5.46957 29.7893 4.96086 29.4142 4.58579C29.0391 4.21071 28.5304 4 28 4ZM4 6H13V26H4V6ZM28 26H15V6H28V26Z" fill="currentColor"/>
+      <path d="M11 16L7.6 19.4L6.2 18L8.2 16L6.2 14.0001L7.6 12.6001L11 16Z" fill="currentColor"/>
+    </svg>
+  )
+
+
+
+
