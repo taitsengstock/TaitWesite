@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar';
 import { graphql } from 'gatsby';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { useSiteState } from "../context/siteContext"
+import Main from '../components/Main';
 
 export default function HomePage({ data }) {
 
@@ -33,7 +34,9 @@ export default function HomePage({ data }) {
         }
       `}>
         <Sidebar css={css`${tablet}{grid-row: 2;}`} />
-        <ProjectGrid projects={projects} css={css`max-width: 1140px; display: grid; padding: var(--spacing-07);`}/>
+        <Main>
+          <ProjectGrid projects={projects} css={css`display: grid;`}/>
+        </Main>
       </div>
     </div>
   );

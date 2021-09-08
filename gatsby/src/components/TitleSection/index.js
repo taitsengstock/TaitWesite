@@ -59,7 +59,7 @@ export default function TitleSection({ person, className }) {
           display: grid;
           grid-template-columns: max-content max-content;
           align-items: center;
-          padding: 0 var(--spacing-05);
+          /* padding: 0 var(--spacing-05); */
           position: relative;
         `}>
           <button onClick={() => navigateHome()} >

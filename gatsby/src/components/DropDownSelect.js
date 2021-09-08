@@ -61,6 +61,9 @@ const  DropDownSelect = ({ className, options, selectedOption, onUpdate, modeSel
           top: 100%;
           left: 0;
           z-index: 2;
+          border: 1px solid var(--border-color);
+          border-radius: var(--standard-radius);
+          box-shadow: var(--shadow);
         `}>
           {options?.map(option => (
             <button 

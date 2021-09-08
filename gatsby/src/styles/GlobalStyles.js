@@ -23,11 +23,12 @@ const GlobalStyles = createGlobalStyle`
     --white: #fff;
     --light-grey: #fafafc;
     --dark-grey: #C5C5C7;
+    --xDark-grey: rgb(104, 103, 111);
     --grey: #ececee;
     --shadow: 0 1px 24px rgba(30,30,40,0.1);
     --standard-radius: 8px;
     // Secondary tokens
-    --text-color: var(--black);
+    --text-color: var(--xDark-grey);
     --ghost: var(--grey);
     --button-radius: calc(var(--standard-radius) / 2);
     --background-color: var(--light-grey);

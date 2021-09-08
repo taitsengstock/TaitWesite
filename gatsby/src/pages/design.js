@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import ProjectGrid from '../components/ProjectGrid';
 import Sidebar from '../components/Sidebar';
+import Main from '../components/Main';
 import { graphql } from 'gatsby';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { useSiteState } from "../context/siteContext"
@@ -34,14 +35,14 @@ export default function HomePage({ data }) {
         }
       `}>
         <Sidebar css={css`${tablet}{grid-row: 2;}`} />
+        <Main>
         <ProjectGrid 
           projects={projects} 
           css={css`
-            max-width: 1140px; 
             display: grid; 
-            padding: var(--spacing-07);
           `}
         />
+        </Main>
       </div>
     </div>
   );

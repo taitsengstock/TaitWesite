@@ -8,13 +8,16 @@ import { useSiteState } from "../context/siteContext"
 import GhostButton from './GhostButton/index.js';
 
 
-export default function Sidebar( {className, related} ) {
+export default function Sidebar( {className, related, currentProject } ) {
 
   const { mobile } = breakpoints
 
   const relatedItems = related
   const [sidebarOpen, setSidebarOpen] = useState(undefined)
   const [siteState, setSiteState] = useSiteState()
+
+  console.log(`current from sidebar`, currentProject?.id)
+  console.log(`current from sidebar`, relatedItems)
 
   useEffect(()=> {
     setSidebarOpen(siteState.sidebarExpanded)
@@ -25,8 +28,10 @@ export default function Sidebar( {className, related} ) {
       className={className}
       css={css`
       border-right: 1px solid var(--border-color);
-      min-width: ${siteState.sidebarExpanded ? `25vw` : `30px`};
-      transition: min-width 0.3s;
+      max-width: ${siteState.sidebarExpanded ? `25vw` : `calc(30px + 2rem)`};
+      transition: max-width 0.3s;
+      transition-delay: ${siteState.sidebarExpanded ? `0s` : `0.2s`};
+      width: 25vw;
     `}>
       <div css={css`
         display: grid;
@@ -59,10 +64,13 @@ export default function Sidebar( {className, related} ) {
       </div>
       <div css={css`
         padding: var(--spacing-07) 0;
+        opacity: ${siteState.sidebarExpanded ? `1` : `0`};
+        transition: opacity 0.2s;
+        transition-delay: ${siteState.sidebarExpanded ? `0.3s` : `0s`};
       `}>
         {related &&
         <>
-          <Link to={`/`} css={css`display: grid; padding: 0 var(--spacing-07); margin-bottom: var(--spacing-07); grid-template-columns: max-content max-content; align-items: center;`}>
+          {/* <Link to={`/`} css={css`display: grid; padding: 0 var(--spacing-07); margin-bottom: var(--spacing-07); grid-template-columns: max-content max-content; align-items: center;`}>
             <ChevronLeft css={css`
               width: var(--font-regular);
               height: var(--font-regular);
@@ -70,32 +78,43 @@ export default function Sidebar( {className, related} ) {
               margin-bottom: 1px;
             `}/>
             Back
-          </Link>
-          <div css={css`display: grid; grid-template-columns: 1fr; grid-row-gap: var(--spacing-05);`}>
-            <h4 css={css`margin-bottom: var(--spacing-03); padding: 0 var(--spacing-07);`}>Related</h4>
+          </Link> */}
+          <div css={css`display: grid; grid-template-columns: 1fr;`}>
+            <h4 css={css`margin-bottom: var(--spacing-05); padding: 0 var(--spacing-07);`}>All Projects</h4>
             {relatedItems.map(relatedItem => (
               <Link to={`/${relatedItem.node?._type}/${relatedItem.node?.slug?.current}`}>
                 <div css={css`
                   display: grid; 
-                  grid-template-columns: 25% 1fr; 
+                  grid-template-columns: max-content 1fr; 
                   grid-column-gap: var(--spacing-05); 
-                  padding: 0 var(--spacing-07);
-                  align-items: start;
+                  padding: var(--spacing-05) var(--spacing-07);
+                  align-items: center;
                   &:hover{
                     background: var(--hover);
                   }
                 `}>
-          
-                    <div>
-                      <Img fluid={relatedItem.node?.image?.asset?.fluid} css={css`
-                        .gatsby-image-wrapper {
-                          display: block;
-                        }
-                      `}/>
-                    </div>
-                    <div>
-                    <h5 css={css`padding: var(--spacing-03) 0;`}>{relatedItem.node?.name}</h5>
-                    </div>
+                  <div css={css`
+                    border-radius: 50%;
+                    width: var(--size-10);
+                    height: var(--size-10);
+                    overflow: hidden;
+                    border: 1px solid;
+                    border-color: ${relatedItem.node?.id === currentProject?.id ? `var(--dark-grey)` : `var(--grey)`};
+                  `}>
+                    <Img fluid={relatedItem.node?.logoicon?.asset?.fluid} css={css`
+                      .gatsby-image-wrapper {
+                        display: block;
+                      }
+                    `}/>
+                  </div>
+                  <div>
+                    <h5 css={css`
+                      padding: var(--spacing-03) 0;
+                      color: ${relatedItem.node?.id === currentProject?.id ? `var(--black)` : `var(--text-color)`};
+                    `}>
+                      {relatedItem.node?.name}
+                    </h5>
+                  </div>
                 </div>
               </Link>
             ))}

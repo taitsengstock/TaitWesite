@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar';
 import { graphql } from 'gatsby';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { useSiteState } from "../context/siteContext"
+import Main from '../components/Main';
 
 
 export default function HomePage({ data }) {
@@ -31,9 +32,11 @@ export default function HomePage({ data }) {
         }
       `}>
         <Sidebar css={css`${tablet}{grid-row: 2;}`} />
-        <div css={css`max-width: 1140px; padding: var(--spacing-07);`}>
+        <Main>
+          <div>
           Home
-        </div>
+          </div>  
+        </Main>
       </div>
     </div>
   );

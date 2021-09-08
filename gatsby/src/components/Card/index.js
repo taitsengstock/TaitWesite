@@ -13,6 +13,8 @@ const Card = ({ project, type }) => {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
 
+  const projectLength = project?.node?.skills?.length
+
   useOutsideClick(tileRef, () => {
     setOpen(false)
   })
@@ -72,7 +74,12 @@ const Card = ({ project, type }) => {
                 }
                 <h4 css={css``}>{project?.node?.name}</h4>
               </div>
-              <p css={css`margin-bottom: var(--spacing-05); font-size: var(--font-small);`}>{project?.node?.description}</p>
+              {/* <p css={css`margin-bottom: var(--spacing-05); font-size: var(--font-small);`}>{project?.node?.description}</p> */}
+              <p css={css`margin-bottom: var(--spacing-05); font-size: var(--font-small);`}>
+                {project?.node?.skills?.map((skill, index) => (
+                  <span>{skill.name}{projectLength === index + 1 ? ``: `, `}</span>
+                ))}
+              </p>
             </div>
           </div>
         </div>

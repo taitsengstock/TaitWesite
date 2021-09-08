@@ -16,7 +16,7 @@ const { mobile } = breakpoints
 
 const Typography = createGlobalStyle`
   html {
-    font-family: IBMPlexSansLight, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: IBMPlexSansRegular, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--text-color);
   }
   p, li {

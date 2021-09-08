@@ -36587,7 +36587,7 @@ var _StyledDiv = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"
 
 var _StyledDiv2 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "DropDownSelect___StyledDiv2"
-})(["display:grid;position:absolute;background-color:var(--white);opacity:", ";pointer-events:", ";width:", ";margin-top:var(--spacing-05);top:100%;left:0;z-index:2;"], function (p) {
+})(["display:grid;position:absolute;background-color:var(--white);opacity:", ";pointer-events:", ";width:", ";margin-top:var(--spacing-05);top:100%;left:0;z-index:2;border:1px solid var(--border-color);border-radius:var(--standard-radius);box-shadow:var(--shadow);"], function (p) {
   return p._css4;
 }, function (p) {
   return p._css5;
@@ -36624,6 +36624,11 @@ var DropDownSelect = function DropDownSelect(_ref) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    setSelected(selectedOption);
+  }, [selectedOption]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    console.log("selected from dropdown", selected);
+
     if (init) {
       if (onUpdate && selected) {
         onUpdate(selected);
@@ -36764,12 +36769,6 @@ var _StyledNav = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"
 
 function Header(_ref2) {
   var className = _ref2.className;
-
-  // const { featuredPerson } = useLatestData();
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_StoreViewContext__WEBPACK_IMPORTED_MODULE_9__["default"]),
-      storeView = _useContext[0],
-      setStoreView = _useContext[1];
-
   var headerData = _public_page_data_sq_d_4085245902_json__WEBPACK_IMPORTED_MODULE_1__.data;
   var people = headerData.allSanityPerson.nodes;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_StyledDiv, {
@@ -36969,7 +36968,7 @@ var StoreViewProvider = function StoreViewProvider(_ref) {
 /*!*******************************!*\
   !*** ./src/components/Svg.js ***!
   \*******************************/
-/*! exports provided: CarouselIcon, GridlIcon, ChevronLeft, ChevronRight */
+/*! exports provided: CarouselIcon, GridlIcon, ChevronLeft, ChevronRight, Collapse, Expand */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36978,6 +36977,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GridlIcon", function() { return GridlIcon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChevronLeft", function() { return ChevronLeft; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChevronRight", function() { return ChevronRight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Collapse", function() { return Collapse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Expand", function() { return Expand; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -37073,6 +37074,36 @@ var ChevronRight = function ChevronRight(_ref4) {
     height: "32"
   }));
 };
+var Collapse = function Collapse(_ref5) {
+  var className = _ref5.className;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 32 32",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    className: className
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M28 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V26C2 26.5304 2.21071 27.0391 2.58579 27.4142C2.96086 27.7893 3.46957 28 4 28H28C28.5304 28 29.0391 27.7893 29.4142 27.4142C29.7893 27.0391 30 26.5304 30 26V6C30 5.46957 29.7893 4.96086 29.4142 4.58579C29.0391 4.21071 28.5304 4 28 4ZM4 6H13V26H4V6ZM28 26H15V6H28V26Z",
+    fill: "currentColor"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M6 16.0001L9.4 12.6002L10.8 14.0001L8.8 16.0001L10.8 18L9.4 19.4L6 16.0001Z",
+    fill: "currentColor"
+  }));
+};
+var Expand = function Expand(_ref6) {
+  var className = _ref6.className;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 32 32",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    className: className
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M28 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V26C2 26.5304 2.21071 27.0391 2.58579 27.4142C2.96086 27.7893 3.46957 28 4 28H28C28.5304 28 29.0391 27.7893 29.4142 27.4142C29.7893 27.0391 30 26.5304 30 26V6C30 5.46957 29.7893 4.96086 29.4142 4.58579C29.0391 4.21071 28.5304 4 28 4ZM4 6H13V26H4V6ZM28 26H15V6H28V26Z",
+    fill: "currentColor"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M11 16L7.6 19.4L6.2 18L8.2 16L6.2 14.0001L7.6 12.6001L11 16Z",
+    fill: "currentColor"
+  }));
+};
 
 /***/ }),
 
@@ -37141,7 +37172,7 @@ var _StyledDiv = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"
 
 var _StyledDiv2 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "TitleSection___StyledDiv2"
-})(["display:grid;grid-template-columns:max-content max-content;align-items:center;padding:0 var(--spacing-05);position:relative;"]);
+})(["display:grid;grid-template-columns:max-content max-content;align-items:center;position:relative;"]);
 
 var _StyledDiv3 = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])("div").withConfig({
   displayName: "TitleSection___StyledDiv3"
@@ -37155,36 +37186,54 @@ function TitleSection(_ref) {
   var person = _ref.person,
       className = _ref.className;
 
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_StoreViewContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
-      storeView = _useContext[0],
-      setStoreView = _useContext[1];
-
-  var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_StoreViewContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
-      siteContext = _useContext2[0],
-      setSiteContext = _useContext2[1];
-
-  var changeStoreView = function changeStoreView(selected) {
-    Object(gatsby__WEBPACK_IMPORTED_MODULE_4__["navigate"])("/" + selected);
-    setStoreView(selected);
-    setSiteState(function (prevState) {
-      return Object.assign({}, prevState, {
-        pageTitle: selected,
-        storeView: selected,
-        theme: selected
-      });
-    });
-  };
-
   var _useSiteState = Object(_context_siteContext__WEBPACK_IMPORTED_MODULE_5__["useSiteState"])(),
       siteState = _useSiteState[0],
       setSiteState = _useSiteState[1];
 
-  console.log("siteState", siteState);
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(),
+      selectedOption = _useState[0],
+      setSelectedOption = _useState[1];
+
+  var changeStoreView = function changeStoreView(selected) {
+    if (selected === "home") {
+      return;
+    } else {
+      setSiteState(function (prevState) {
+        return Object.assign({}, prevState, {
+          pageTitle: selected,
+          storeView: selected,
+          theme: selected
+        });
+      });
+      Object(gatsby__WEBPACK_IMPORTED_MODULE_4__["navigate"])("/" + selected);
+    }
+  };
+
+  var navigateHome = function navigateHome() {
+    setSiteState(function (prevState) {
+      return Object.assign({}, prevState, {
+        pageTitle: "home",
+        storeView: "home",
+        theme: "design"
+      });
+    });
+    Object(gatsby__WEBPACK_IMPORTED_MODULE_4__["navigate"])("/");
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    setSelectedOption(siteState.storeView);
+    console.log("siteState", siteState);
+  }, [siteState]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    console.log("selectedOption", selectedOption);
+  }, [selectedOption]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv, {
     className: className
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv2, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-    to: '/'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv3, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledH, null, person.name, "/"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_DropDownSelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv2, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+    onClick: function onClick() {
+      return navigateHome();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledDiv3, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledH, null, person.name, siteState.storeView && "/"))), selectedOption && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_DropDownSelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
     options: [{
       id: 'art',
       name: 'art'
@@ -37192,12 +37241,12 @@ function TitleSection(_ref) {
       id: 'design',
       name: 'design'
     }],
-    selectedOption: siteState === null || siteState === void 0 ? void 0 : siteState.storeView,
+    selectedOption: selectedOption,
     onUpdate: function onUpdate(selected) {
       return changeStoreView(selected);
     },
     modeSelector: true
-  })));
+  }, console.log("selectedOption from dom", selectedOption))));
 }
 
 /***/ }),
@@ -37225,7 +37274,8 @@ __webpack_require__.r(__webpack_exports__);
 var initialSiteState = {
   pageTitle: null,
   storeView: "",
-  theme: ""
+  theme: "design",
+  sidebarExpanded: true
 };
 var SiteContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({
   siteState: initialSiteState,
@@ -37305,7 +37355,7 @@ var breakpoints = {
   desktopUp: '@media (min-width: 1025px)'
 };
 var mobile = breakpoints.mobile;
-var GlobalStyles = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--black);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 11rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"], ["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--black);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 11rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"])), mobile);
+var GlobalStyles = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --xDark-grey: rgb(104, 103, 111);\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--xDark-grey);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 11rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"], ["\n  :root {\n    font-size: 10px;\n    // Primary Tokens\n    --red: #FF4949;\n    --darkRed: #d73131;\n    --blue: #00077b;\n    --black: #2E2E2E;\n    --yellow: #dfff00;\n    --white: #fff;\n    --light-grey: #fafafc;\n    --dark-grey: #C5C5C7;\n    --xDark-grey: rgb(104, 103, 111);\n    --grey: #ececee;\n    --shadow: 0 1px 24px rgba(30,30,40,0.1);\n    --standard-radius: 8px;\n    // Secondary tokens\n    --text-color: var(--xDark-grey);\n    --ghost: var(--grey);\n    --button-radius: calc(var(--standard-radius) / 2);\n    --background-color: var(--light-grey);\n    --border-color: var(--grey);\n    // Font Sizes\n    --font-xsmall: 10px;\n    --font-small: 14px;\n    --font-regular: 16px;\n    --font-large: 18px;\n    --font-xlarge: 20px;\n    --font-xxlarge: 27px;\n    --font-xxxlarge: 60px;\n    ", "{\n      --font-xsmall: 10px;\n      --font-small: 12px;\n      --font-regular: 16px;\n      --font-large: 17px;\n      --font-xlarge: 18px;\n      --font-xxlarge: 19px;\n      --font-xxxlarge: 36px;\n    }\n    //Spacing Tokens\n    --spacing-01:\t0.125rem;\t\n    --spacing-02:\t0.25rem;\t\n    --spacing-03:\t0.5rem;\t\n    --spacing-04:\t0.75rem;\t\n    --spacing-05:\t1rem;\n    --spacing-06:\t1.5rem;\t\t\n    --spacing-07:\t2rem;\t\n    --spacing-08:\t2.5rem;\t\t\n    --spacing-09:\t3rem;\t\n    --spacing-10:\t4rem;\t\t\n    --spacing-11:\t5rem;\t\n    --spacing-12:\t6rem;\t\n    --spacing-13:\t10rem;\n    //Sizing Tokens\n    --size-01:\t0.125rem;\t\n    --size-02:\t0.25rem;\t\n    --size-03:\t0.5rem;\t\n    --size-04:\t0.75rem;\t\n    --size-05:\t1rem;\n    --size-06:\t1.5rem;\t\t\n    --size-07:\t2rem;\t\n    --size-08:\t2.5rem;\t\t\n    --size-09:\t3rem;\t\n    --size-10:\t4rem;\t\t\n    --size-11:\t5rem;\t\n    --size-12:\t6rem;\t\n    --size-13:\t10rem;\n    --body-height: calc(100vh - (2px + 11rem));\n  }\n  html {\n    font-size: 10px;\n    color: var(--text-color);\n    background-color: var(--background-color);\n  }\n  body {\n    font-size: var(--font-regular);\n  }\n  \n  h1, .h1{\n    font-size: var(--font-xxxlarge);\n    line-height: 1.3;\n  }\n\n  h2, .h2{\n    font-size: var(--font-xxlarge);\n    line-height: 1.3;\n  }\n\n  h3, .h3{\n    font-size: var(--font-xlarge);\n    line-height: 1.3;\n  }\n\n  h4, .h4{\n    font-size: var(--font-regular);\n    line-height: 1.3;\n  }\n\n  h5, .h5{\n    font-size: var(--font-small);\n    line-height: 1.3;\n  }\n  body, .p{\n    line-height: 1.3;\n  }\n  p.small{\n    font-size: var(--font-small);\n  }\n  p{\n    margin-bottom: 0.5em;\n    &:last-child{\n      margin-bottom: 0;\n    }\n  }\n\n  fieldset {\n    border-color: rgba(0,0,0,0.1);\n    border-width: 1px;\n  }\n\n  button, .button {\n    border: 0;\n    display: inline-block;\n    cursor: pointer;\n    transition: all 0.2s;\n    &:hover {\n    }\n  }\n\n  .gatsby-image-wrapper img[src*=base64\\\\,] {\n    image-rendering: -moz-crisp-edges;\n    image-rendering: pixelated;\n  }\n\n  /* Scrollbar Styles */\n  /* body::-webkit-scrollbar {\n    width: 12px;\n  }\n  body::-webkit-scrollbar-track {\n    background: var(--white);\n  }\n  body::-webkit-scrollbar-thumb {\n    border-radius: 6px;\n    border: 3px solid var(--white);\n  } */\n\n  img {\n    max-width: 100%;\n    width: 100%;\n  }\n\n  /* Animations  */\n  @-webkit-keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fade {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @-webkit-keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n\n  @keyframes fadeback {\n      0% { opacity: 1; filter:alpha(opacity=100); }\n      33% { opacity: 0; filter:alpha(opacity=0); }\n      66% { opacity: 0; filter:alpha(opacity=0); }\n      100% { opacity: 1; filter:alpha(opacity=100); }\n  }\n  @keyframes Shimmer {\n    0% {\n      background-position: -100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  ul {\n    padding-inline-start: 10px;\n    list-style-type: disc;\n  }\n  li {\n      list-style-position: inside;\n  } \n\n  .arrow {\n    cursor: pointer;\n  }\n\n  .loading-item {\n    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAQAAADsOj3LAAAADklEQVR42mNkgANGQkwAAJoABWH6GPAAAAAASUVORK5CYII=');\n    position: relative;\n    background: --black;\n    background: linear-gradient(\n      to right,\n      #2e2e2e 0%,\n      #3b3a3a 50%,\n      #2e2e2e 100%\n    );\n    animation-duration: 1.8s;\n    animation-fill-mode: forwards;\n    animation-iteration-count: infinite;\n    animation-name: Shimmer;\n    animation-timing-function: linear;\n    background-size: 200% 200%;\n    border-radius: 8px;\n  }\n\n  .loading-item.light {\n    background: --grey;\n    background: linear-gradient(\n      to right,\n      #efefef 0%,\n      #f4f4f4 50%,\n      #efefef 100%\n    );\n  }\n\n  body.ReactModal__Body--open {\n    overflow-y: hidden;\n  }\n  .ReactModal__Overlay {\n      opacity: 0;\n      transition: opacity 500ms ease-in-out;\n  }\n\n  .ReactModal__Overlay--after-open{\n      opacity: 1;\n  }\n\n  .ReactModal__Overlay--before-close{\n      opacity: 0;\n  }\n"])), mobile);
 /* harmony default export */ __webpack_exports__["default"] = (GlobalStyles);
 
 /***/ }),
@@ -37358,16 +37408,18 @@ var breakpoints = {
   desktopUp: '@media (min-width: 1025px)'
 };
 var mobile = breakpoints.mobile;
-var Theme = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    :root {\n      --text-color: ", ";\n      --background-color: ", ";\n      --hover: ", ";\n    }\n    html {\n      /* font-family: ", "; */\n    }\n    h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {\n      font-family: ", "; \n      letter-spacing: 0.02em;\n  }\n"])), function (props) {
+var Theme = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    :root {\n      --text-color: ", ";\n      --background-color: ", ";\n      --hover: ", ";\n      --border-color: ", ";\n    }\n    html {\n      /* font-family: ", "; */\n    }\n    h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {\n      font-family: ", "; \n      letter-spacing: 0.02em;\n    }\n    p {\n      color: var(--text-color);\n    }\n"])), function (props) {
   return props.theme === 'design' ? 'var(--black)' : 'var(--black)';
 }, function (props) {
   return props.theme === 'design' ? 'var(--white)' : 'var(--light-grey)';
 }, function (props) {
   return props.theme === 'design' ? 'var(--light-grey)' : 'var(--grey)';
 }, function (props) {
+  return props.theme === 'design' ? 'var(--grey)' : 'transparent';
+}, function (props) {
   return props.theme === 'design' ? 'Montserrat, -apple-system' : 'BaskervilleRegular, -apple-system';
 }, function (props) {
-  return props.theme === 'design' ? 'IBMPlexSansMedium, -apple-system' : 'BaskervilleRegular, -apple-system';
+  return props.theme === 'design' ? 'IBMPlexSansMedium, -apple-system' : 'IBMPlexSansMedium, -apple-system';
 });
 /* harmony default export */ __webpack_exports__["default"] = (Theme);
 
@@ -37417,7 +37469,7 @@ var breakpoints = {
   desktopUp: '@media (min-width: 1025px)'
 };
 var mobile = breakpoints.mobile;
-var Typography = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  html {\n    font-family: IBMPlexSansLight, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    color: var(--text-color);\n  }\n  p, li {\n    letter-spacing: 0.5px;\n  }\n  h1,h2,h3,h4,h5,h6 {\n    font-family: IBMPlexSansMedium, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    font-weight: normal;\n    margin: 0;\n  }\n  a {\n    color: var(--text-color);\n    text-decoration-color: var(--text-decoration-color);\n    /* Chrome renders this weird with this font, so we turn it off */\n    text-decoration-skip-ink: none;\n  }\n  .center {\n    text-align: center;\n  }\n  .tilt {\n    transform: rotate(-2deg);\n  }\n  .large-text {\n    font-size: 1.4em;\n  }\n  .small-text {\n    font-size: 0.8em;\n    ", " {\n      font-size: 1em;\n    }\n  }\n"])), mobile);
+var Typography = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])(_templateObject || (_templateObject = Object(_babel_runtime_helpers_esm_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  html {\n    font-family: IBMPlexSansRegular, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    color: var(--text-color);\n  }\n  p, li {\n    letter-spacing: 0.5px;\n  }\n  h1,h2,h3,h4,h5,h6 {\n    font-family: IBMPlexSansMedium, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n    font-weight: normal;\n    margin: 0;\n  }\n  a {\n    color: var(--text-color);\n    text-decoration-color: var(--text-decoration-color);\n    /* Chrome renders this weird with this font, so we turn it off */\n    text-decoration-skip-ink: none;\n  }\n  .center {\n    text-align: center;\n  }\n  .tilt {\n    transform: rotate(-2deg);\n  }\n  .large-text {\n    font-size: 1.4em;\n  }\n  .small-text {\n    font-size: 0.8em;\n    ", " {\n      font-size: 1em;\n    }\n  }\n"])), mobile);
 /* harmony default export */ __webpack_exports__["default"] = (Typography);
 
 /***/ }),

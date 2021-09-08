@@ -14,6 +14,7 @@
   import Sidebar from '../Sidebar.js';
   import Carousel from '../Carousel.js';
   import Label from '../Label.js'
+  import { useSiteState } from "../../context/siteContext"
 
   const {mobile} = breakpoints
 
@@ -43,19 +44,19 @@
   export default function SingleProjectPage({ data: { project, allSanityProject } }) {
     const {mobile, tablet} = breakpoints
     const [hovered, setHovered] = useState(false)
-    console.log(`allSanityProject`, allSanityProject)
     const projects = allSanityProject.edges
+    const [siteState, setSiteState] = useSiteState()
 
     return (
       <div css={css`
         display: grid;
-        grid-template-columns: 25% 1fr;
+        grid-template-columns: max-content 1fr;
         min-height: var(--body-height);
         ${tablet}{
           grid-template-columns: 1fr;
         }
       `}>
-        <Sidebar css={css`${tablet}{grid-row: 2;}`} related={projects}/>
+        <Sidebar css={css`${tablet}{grid-row: 2;}`} related={projects} currentProject={project}/>
         <div css={css`
           display: grid;
           grid-template-columns: clamp(0%, 75%, 90vh) 1fr;
@@ -127,6 +128,7 @@
     allSanityProject {
       edges {
         node {
+          id
           _type
           name
           description
@@ -148,14 +150,15 @@
           slug {
             current
           }
-          logo {
-            asset {
-              url
-            }
-          }
           logoicon {
             asset {
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
               url
+              metadata {
+                lqip
+              }
             }
           }
         }
