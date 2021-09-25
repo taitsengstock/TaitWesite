@@ -10,14 +10,11 @@ import GhostButton from './GhostButton/index.js';
 
 export default function Sidebar( {className, related, currentProject } ) {
 
-  const { mobile } = breakpoints
+  const { mobile, tablet } = breakpoints
 
   const relatedItems = related
   const [sidebarOpen, setSidebarOpen] = useState(undefined)
   const [siteState, setSiteState] = useSiteState()
-
-  console.log(`current from sidebar`, currentProject?.id)
-  console.log(`current from sidebar`, relatedItems)
 
   useEffect(()=> {
     setSidebarOpen(siteState.sidebarExpanded)
@@ -32,12 +29,21 @@ export default function Sidebar( {className, related, currentProject } ) {
       transition: max-width 0.3s;
       transition-delay: ${siteState.sidebarExpanded ? `0s` : `0.2s`};
       width: 25vw;
+      ${tablet}{
+        border-right: none;
+        width: 100%;
+        max-width: 100%;
+      }
     `}>
       <div css={css`
         display: grid;
         justify-items: flex-end;
         padding: var(--spacing-05);
         border-bottom: 1px solid var(--border-color);
+        ${tablet}{
+          display: none;
+          overflow:hidden;
+        }
       `}>
         <GhostButton
           onClick={()=> setSiteState(prevState => ({

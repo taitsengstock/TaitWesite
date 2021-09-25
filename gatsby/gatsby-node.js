@@ -22,7 +22,7 @@ async function turnProjectsIntoPages({ graphql, actions }) {
   data.projects.nodes.forEach((project) => {
     actions.createPage({
       // what is the url for this page
-      path: `project/${project.slug.current}`,
+      path: `design/${project.slug.current}`,
       component: projectTemplate,
       context: {
         slug: project.slug.current,
@@ -51,7 +51,7 @@ async function turnArtworksIntoPages({ graphql, actions }) {
   data.artworks.nodes.forEach((artwork) => {
     actions.createPage({
       // what is the url for this page
-      path: `artwork/${artwork.slug.current}`,
+      path: `art/${artwork.slug.current}`,
       component: artworkTemplate,
       context: {
         slug: artwork.slug.current,

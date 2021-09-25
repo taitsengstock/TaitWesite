@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import useOutsideClick from "../../utils/useOutsideClick"
-import { Link } from 'gatsby-plugin-modal-routing';
+import { Link } from 'gatsby';
 import {breakpoints} from '../../styles/GlobalStyles.js';
 import Carousel from '../Carousel';
 import { css } from 'styled-components'
@@ -19,6 +19,14 @@ const Card = ({ project, type }) => {
     setOpen(false)
   })
 
+  const projectType = ()=> {
+    if(type === 'project'){
+      return 'design'
+    }
+    if(type === 'artwork'){
+      return 'art'
+    }
+  }
   return (
     <div 
       onMouseEnter={() => setHovered(true)}
@@ -32,7 +40,7 @@ const Card = ({ project, type }) => {
     ref={tileRef}
     >
       <Link 
-      to={`/${type}/${project?.node?.slug?.current}`}
+      to={`/${projectType()}/${project?.node?.slug?.current}`}
       >
         <div 
         css={css`

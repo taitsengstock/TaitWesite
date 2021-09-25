@@ -15,6 +15,14 @@ export default {
       description: 'Name of the Store',
     },
     {
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'featuredPerson',
       title: 'Featured Person',
       type: 'array',

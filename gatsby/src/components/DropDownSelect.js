@@ -1,26 +1,41 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { ChevronLeft } from './Svg.js';
+import { useSiteState } from "../context/siteContext"
 
-const  DropDownSelect = ({ className, options, selectedOption, onUpdate, modeSelector }) => {
+const  DropDownSelect = ({ className, options, onUpdate, modeSelector }) => {
 
-  const [selected, setSelected] = useState(selectedOption)
-  const [open, setOpen] = useState(false)
+  const [siteState, setSiteState] = useSiteState()
+  const [active, setActive] = useState()
+  const [selected, setSelected] = useState(undefined)
   const [init, setInit] = useState(false)
+  const [initialValue, setInitialValue] = useState(undefined)
 
   const setSelectedOption = (option) => {
     setSelected(option)
-    setOpen(false)
+    setSiteState(prevState => ({
+      ...prevState,
+      selectOpen: false,
+    }))
   }
 
-  useEffect(()=> {
-    setSelected(selectedOption)
-  }, [selectedOption])
+  const s = '/design/project-1';
+
+  const sudstring = s.substring(0, s.indexOf('/'))
+
+  console.log(`s`, s.substring(0, s.indexOf('/')))
+
 
   useEffect(()=> {
-    console.log(`selected from dropdown`, selected)
+    setSelected(undefined)
+    if (siteState.location){
+      setInitialValue(siteState.location.substring(1))
+    }
+  }, [siteState.location])
+
+  useEffect(()=> {
     if (init){
       if (onUpdate && selected) {
         onUpdate(selected)
@@ -28,24 +43,30 @@ const  DropDownSelect = ({ className, options, selectedOption, onUpdate, modeSel
     }
     setInit(true)
   }, [selected])
-  
+
+
   return (
     <div className={className}>
       <button 
-        onClick={() => setOpen(!open)}
+        onClick={() => setSiteState(prevState => ({
+          ...prevState,
+          selectOpen: !siteState.selectOpen,
+        }))}
         css={css`
           display: grid;
           grid-template-columns: max-content max-content;;
           align-items: center;
         `}
       >
-        <span className='h3' css={css`font-size: ${modeSelector ? `var(--font-large)` : `inherit`};`}>{selected}</span>
+        <span className='h3' css={css`font-size: ${modeSelector ? `var(--font-large)` : `inherit`};`}>
+          {selected ? selected : initialValue}
+        </span>
         <ChevronLeft css={css`
           width: var(--font-regular);
           height: var(--font-regular);
           display: block;
           transition: 0.3s transform;
-          transform: ${open ? `rotate(90deg)` : `rotate(270deg)`};
+          transform: ${siteState.selectOpen ? `rotate(90deg)` : `rotate(270deg)`};
           margin-left: var(--spacing-01);
         `}/>
       </button>
@@ -54,13 +75,14 @@ const  DropDownSelect = ({ className, options, selectedOption, onUpdate, modeSel
           display: grid;
           position: absolute;
           background-color: var(--white);
-          opacity: ${open ? `1` : `0`};
-          pointer-events: ${open ? `all` : `none`};
+          opacity: ${siteState.selectOpen ? `1` : `0`};
+          pointer-events: ${siteState.selectOpen ? `all` : `none`};
           width: ${modeSelector ? `100%` : `auto`};
+          transition: opacity 0.3s;
           margin-top: var(--spacing-05);
           top: 100%;
           left: 0;
-          z-index: 2;
+          z-index: -2;
           border: 1px solid var(--border-color);
           border-radius: var(--standard-radius);
           box-shadow: var(--shadow);
@@ -72,35 +94,43 @@ const  DropDownSelect = ({ className, options, selectedOption, onUpdate, modeSel
             css={css`
               text-align: left;
               padding: var(--spacing-05);
+              background: ${active === option.name ? `var(--major)` : `inherit`};
+              color: ${active === option.name ? `var(--white)` : `inherit`};
               :hover{
-                background: var(--hover);
+                background: ${active === option.name ? `var(--major)` : `var(--half-major)`};
               }
             `}
             >{option.name}
             </button>
           ))}
         </div>
+        {/* <Instructions 
+          css={css`
+            opacity: ${siteState.selectOpen && siteState.location === `/`? `1` : `0`};
+            pointer-events: ${siteState.selectOpen && siteState.location === `/` ? `all` : `none`};
+            width: ${modeSelector ? `100%` : `auto`};
+        `}>
+            Please select which content you would like to see
+        </Instructions> */}
       </div>
     </div>
   )
 }
 
-DropDownSelect.defaultProps = {
- options: [
-   {
-     id: '1',
-     name: 'option 1'
-   },
-   {
-    id: '2',
-    name: 'option 2'
-   },
-   {
-    id: '3',
-    name: 'option 3',
-   },
- ],
- selectedOption: `option 1`,
-}
+const Instructions = styled.div`
+  position: absolute;
+  background-color: var(--white);
+  margin-top: var(--spacing-05);
+  padding: var(--spacing-05);
+  top: 100%;
+  left: calc(100% + var(--spacing-05));
+  z-index: -2;
+  border: 1px solid var(--border-color);
+  border-radius: var(--standard-radius);
+  box-shadow: var(--shadow);
+  font-size: var(--font-small);
+  color: var(--white);
+  background-color: var(--blue);
+`
 
 export default DropDownSelect

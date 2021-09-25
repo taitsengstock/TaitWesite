@@ -1,107 +1,72 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import { graphql } from 'gatsby';
+import { graphql, Link, navigate } from 'gatsby';
+import Img from 'gatsby-image';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { useSiteState } from "../context/siteContext"
-import Main from '../components/Main';
-
+import Button from '../components/Button';
 
 export default function HomePage({ data }) {
 
-
   const {tablet, mobile} = breakpoints
-
-
-  const [siteState, setSiteState] = useSiteState()
+  const [siteState, setSiteState] = useSiteState()  
 
   useEffect(()=> {
     setSiteState(prevState => ({
       ...prevState,
-      pageTitle: `home`,
-      storeView: `home`,
+      sidebarExpanded: true,
     }))
   }, [])
+
   return (
-    <div>
-      <div css={css`
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        min-height: var(--body-height);
-        ${tablet}{
-          grid-template-columns: 1fr;
-        }
+    <div css={css`margin-top: var(  --spacing-09);`}>
+      <h1>Tait Sengtock</h1>
+      <p css={css`
+        margin-bottom: var(--spacing-07);
+        font-size: var(--font-large);
       `}>
-        <Sidebar css={css`${tablet}{grid-row: 2;}`} />
-        <Main>
-          <div>
-          Home
-          </div>  
-        </Main>
+        Melbourne based creative practitioner.
+      </p>
+      <div 
+        css={css`
+          display: grid;
+          grid-template-columns: repeat(2, max-content);
+          column-gap: var(--spacing-05);
+      `}>
+        <Button to={`/art`}> See Art</Button>
+        <Button to={`/design`}>See Design</Button>
       </div>
     </div>
   );
 }
 
+
 export const query = graphql`
   query {
-    allSanityProject {
-      edges {
-        node {
-          _type
-          name
-          description
-          skills {
-            name
-            id
-          }
-          image {
-            asset {
-              fluid(maxWidth: 800) {
-                ...GatsbySanityImageFluid
-              }
-              url
-              metadata {
-                lqip
-              }
+    designStore: allSanityStoreSettings(filter: {_id: {eq: "355799ff-8bb5-41ba-aebf-a53817ca9fe8"}}) {
+      nodes {
+        _id
+        image {
+          asset {
+            fluid(maxWidth: 800) {
+              ...GatsbySanityImageFluid
             }
-          }
-          slug {
-            current
-          }
-          logo {
-            asset {
-              url
-            }
-          }
-          logoicon {
-            asset {
-              url
-            }
+            url
           }
         }
       }
     }
-    allSanityArtwork {
-      edges {
-        node {
-          _type
-          name
-          description
-          image {
-            asset {
-              fluid(maxWidth: 800) {
-                ...GatsbySanityImageFluid
-              }
-              url
-              metadata {
-                lqip
-              }
-            }
+    artStore: allSanityStoreSettings(filter: {_id: {eq: "a88ed9b8-7922-442d-8abe-adb283a20cd9"}}) {
+      nodes {
+        _id
+        image {
+        asset {
+          fluid(maxWidth: 800) {
+            ...GatsbySanityImageFluid
           }
-          slug {
-            current
-          }
+          url
         }
+      }
       }
     }
   }

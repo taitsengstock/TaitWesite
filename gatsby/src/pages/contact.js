@@ -1,19 +1,17 @@
 import React from 'react';
 import { css } from 'styled-components';
 import Sidebar from '../components/Sidebar';
+import Main from '../components/Main';
+import {breakpoints} from '../styles/GlobalStyles.js';
 
 export default function ContactPage() {
+
+  const {tablet, mobile} = breakpoints
   return (
     <div css={css`
-        display: grid;
-        grid-template-columns: 25% 1fr;
-        min-height: var(--body-height);
-      `}>
-        <Sidebar />
-        <div css={css`max-width: 1140px; padding: var(--spacing-07);`}>
-          <h1>Contact</h1>
-          <p>For now just send me an email at taitsengstock@gmail.com</p>
-        </div>
-      </div>
+    `}>
+        <h1 css={css`margin-bottom: var(--spacing-03);`}>Contact</h1>
+        <p css={css`margin-bottom: var(--spacing-10);`}>For now just send me an email at taitsengstock@gmail.com</p>
+    </div>
   );
 }

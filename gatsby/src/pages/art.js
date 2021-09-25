@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { useSiteState } from "../context/siteContext"
 import Main from '../components/Main';
+import Container from '../components/Container';
 
 export default function HomePage({ data }) {
 
@@ -14,31 +15,8 @@ export default function HomePage({ data }) {
 
   const [siteState, setSiteState] = useSiteState()
 
-  useEffect(()=> {
-    setSiteState(prevState => ({
-      ...prevState,
-      pageTitle: `art`,
-      storeView: `art`,
-      theme: `art`,
-    }))
-  }, [])
-
   return (
-    <div>
-      <div css={css`
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        min-height: var(--body-height);
-        ${tablet}{
-          grid-template-columns: 1fr;
-        }
-      `}>
-        <Sidebar css={css`${tablet}{grid-row: 2;}`} />
-        <Main>
-          <ProjectGrid projects={projects} css={css`display: grid;`}/>
-        </Main>
-      </div>
-    </div>
+    <ProjectGrid projects={projects} css={css`display: grid;`}/>
   );
 }
 

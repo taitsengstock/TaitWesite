@@ -6,7 +6,7 @@ import Nav from '../Nav.js';
 import { Section } from '../Section/index.js';
 import TitleSection from '../TitleSection/index.js';
 import useLatestData from '../../utils/useLatestData';
-import StoreViewContext from '../StoreViewContext';
+import { useSiteState } from "../../context/siteContext"
 
 const { mobile } = breakpoints
 
@@ -21,6 +21,8 @@ function FeaturedPerson({ person }) {
 }
 
 export default function Header({ className }) {
+
+  const [siteState, setSiteState] = useSiteState()
   
   const headerData = useStaticQuery(graphql`
     query {

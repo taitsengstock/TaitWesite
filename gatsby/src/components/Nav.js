@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import {breakpoints} from '../styles/GlobalStyles.js';
+import Button from './Button/index.js';
 
 const { mobile } = breakpoints
 
@@ -16,7 +17,7 @@ export default function Nav({className}) {
         justify-content: center;
       }
     `}>
-      <ul css={css`
+      <div css={css`
         margin: 0;
         padding: 0;
         text-align: center;
@@ -26,10 +27,8 @@ export default function Nav({className}) {
         grid-gap: var(--spacing-05);
         align-items: center;
       `}>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
+          <Button to="/contact">Contact</Button>
+      </div>
     </nav>
   );
 }

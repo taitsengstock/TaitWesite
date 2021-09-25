@@ -25,9 +25,6 @@
           grid-template-rows: max-content 1fr;
         } 
       `}>
-        {/* <ListToolbar css={css`
-            grid-column: 1/13;
-          `}/> */}
         { projects ?
           <div css={css`
             grid-column: 1/13;

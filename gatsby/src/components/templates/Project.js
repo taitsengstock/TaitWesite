@@ -50,57 +50,47 @@
     return (
       <div css={css`
         display: grid;
-        grid-template-columns: max-content 1fr;
-        min-height: var(--body-height);
-        ${tablet}{
+        grid-template-columns: clamp(0%, 75%, 90vh) 1fr;
+        /* padding: var(--spacing-07); */
+        grid-column-gap: var(--spacing-05);
+        ${mobile}{
           grid-template-columns: 1fr;
         }
       `}>
-        <Sidebar css={css`${tablet}{grid-row: 2;}`} related={projects} currentProject={project}/>
+        <div css={css`display: none; ${mobile}{display: block;}`}>
+          <h1 className="h2" css={css`margin-bottom: var(--spacing-07);`}>{project.name}</h1>
+        </div>
+        <Carousel 
+          slidesDesktop={1} 
+          slidesMobile={1} 
+          fixedArrows
+          center={false}
+          >
+            {project.imagesGallery.map((galleryImage) => (
+              <Img fluid={galleryImage.asset.fluid} css={css`
+                border-radius: 8px;
+                .gatsby-image-wrapper {
+                  display: block;
+                }
+              `}/>
+            ))}
+        </Carousel>
         <div css={css`
-          display: grid;
-          grid-template-columns: clamp(0%, 75%, 90vh) 1fr;
-          padding: var(--spacing-07);
-          grid-column-gap: var(--spacing-05);
-          ${mobile}{
-            grid-template-columns: 1fr;
-          }
+          padding-top: calc(37px + var(--spacing-05));
         `}>
-          <div css={css`display: none; ${mobile}{display: block;}`}>
-            <h1 className="h2" css={css`margin-bottom: var(--spacing-07);`}>{project.name}</h1>
-          </div>
-          <Carousel 
-            slidesDesktop={1} 
-            slidesMobile={1} 
-            fixedArrows
-            center={false}
-            >
-              {project.imagesGallery.map((galleryImage) => (
-                <Img fluid={galleryImage.asset.fluid} css={css`
-                  border-radius: 8px;
-                  .gatsby-image-wrapper {
-                    display: block;
-                  }
-                `}/>
-              ))}
-          </Carousel>
+          <h1 className="h2" css={css`margin-bottom: var(--spacing-07);${mobile}{display: none;}`}>{project.name}</h1>
           <div css={css`
-            padding-top: calc(37px + var(--spacing-05));
+            list-style-type: none;
+            padding-inline-start: 0px;
+            margin-bottom: var(--spacing-05);
           `}>
-            <h1 className="h2" css={css`margin-bottom: var(--spacing-07);${mobile}{display: none;}`}>{project.name}</h1>
-            <div css={css`
-              list-style-type: none;
-              padding-inline-start: 0px;
-              margin-bottom: var(--spacing-05);
-            `}>
-              {project.skills.map((skill) => (
-                <Label key={skill.id} className="label">{skill.name}</Label>
-              ))}
-            </div>
-            <p>
-              {project.description}
-            </p>
+            {project.skills.map((skill) => (
+              <Label key={skill.id} className="label">{skill.name}</Label>
+            ))}
           </div>
+          <p>
+            {project.description}
+          </p>
         </div>
       </div>
     );

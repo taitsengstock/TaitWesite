@@ -17,7 +17,9 @@ const GlobalStyles = createGlobalStyle`
     // Primary Tokens
     --red: #FF4949;
     --darkRed: #d73131;
-    --blue: #00077b;
+    --blue: #6969e0;
+    --light-blue: #d8d8ff;
+    --dark-blue: #020235;
     --black: #2E2E2E;
     --yellow: #dfff00;
     --white: #fff;
@@ -33,6 +35,8 @@ const GlobalStyles = createGlobalStyle`
     --button-radius: calc(var(--standard-radius) / 2);
     --background-color: var(--light-grey);
     --border-color: var(--grey);
+    --major: var(--blue);
+    --half-major: var(--light-blue);
     // Font Sizes
     --font-xsmall: 10px;
     --font-small: 14px;

@@ -18,31 +18,24 @@ export default function TitleSection({ person, className }) {
       setSiteState(prevState => ({
         ...prevState,
         pageTitle: selected,
-        storeView: selected,
-        theme: selected,
+        // storeView: selected,
       }))
       navigate(`/${selected}`)
     }
   }
 
   const navigateHome = () => {
-    setSiteState(prevState => ({
-      ...prevState,
-      pageTitle: `home`,
-      storeView: `home`,
-      theme: `design`,
-    }))
-    navigate(`/`)
+    if(siteState.location !== "/"){
+      setSiteState(prevState => ({
+        ...prevState,
+        pageTitle: undefined,
+        // storeView: undefined,
+      }))
+      setSelectedOption(false)
+      navigate(`/`)
+    }
   }
 
-  useEffect(()=> {
-    setSelectedOption(siteState.storeView)
-    console.log(`siteState`, siteState)
-  }, [siteState])
-
-  useEffect(()=> {
-    console.log(`selectedOption`, selectedOption)
-  }, [selectedOption])
 
   return (
     <div 
@@ -61,15 +54,15 @@ export default function TitleSection({ person, className }) {
           align-items: center;
           /* padding: 0 var(--spacing-05); */
           position: relative;
+          z-index: 5;
         `}>
           <button onClick={() => navigateHome()} >
             <div css={css`display: flex; align-items: center;`}>
               <h3 css={css`color: var(--dark-grey); font-size: var(--font-large);`}>
-                {person.name}{siteState.storeView && `/`}
+                {person.name}/
               </h3>
             </div>
           </button>
-          {selectedOption &&
             <DropDownSelect 
               options={[
                 {
@@ -84,10 +77,9 @@ export default function TitleSection({ person, className }) {
               selectedOption={selectedOption}
               onUpdate={selected => changeStoreView(selected)}
               modeSelector
+              isOpen={!selectedOption}
             >
-              {console.log(`selectedOption from dom`, selectedOption)}
             </DropDownSelect>
-          }
         </div>
     </div>
   );

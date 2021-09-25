@@ -8,7 +8,7 @@ import { useSiteState } from "../context/siteContext"
 import GhostButton from './GhostButton/index.js';
 
 
-export default function Sidebar( {className, children} ) {
+export default function Main( {className, children} ) {
 
   const { mobile } = breakpoints
 

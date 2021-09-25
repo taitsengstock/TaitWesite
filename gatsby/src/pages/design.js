@@ -5,46 +5,25 @@ import Main from '../components/Main';
 import { graphql } from 'gatsby';
 import {breakpoints} from '../styles/GlobalStyles.js';
 import { useSiteState } from "../context/siteContext"
+import Container from '../components/Container';
 
 
-export default function HomePage({ data }) {
+export default function DesignPage({ data }) {
 
   const {tablet, mobile} = breakpoints
-  // console.log(`data`, data)
   const projects = data?.allSanityProject?.edges
 
   const [siteState, setSiteState] = useSiteState()
 
-  useEffect(()=> {
-    setSiteState(prevState => ({
-      ...prevState,
-      pageTitle: `design`,
-      storeView: `design`,
-      theme: `design`,
-    }))
-  }, [])
-
   return (
-    <div>
-      <div css={css`
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        min-height: var(--body-height);
-        ${tablet}{
-          grid-template-columns: 1fr;
-        }
-      `}>
-        <Sidebar css={css`${tablet}{grid-row: 2;}`} />
-        <Main>
-        <ProjectGrid 
-          projects={projects} 
-          css={css`
-            display: grid; 
-          `}
-        />
-        </Main>
-      </div>
-    </div>
+      <ProjectGrid 
+        projects={projects} 
+        css={css`
+          display: grid;
+          /* opacity: ${siteState.location === `/${siteState.storeView}` ? `1` : `0`};
+          transition: opacity 0.5s;  */
+        `}
+      />
   );
 }
 
