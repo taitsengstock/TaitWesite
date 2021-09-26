@@ -21,19 +21,23 @@ const  DropDownSelect = ({ className, options, onUpdate, modeSelector }) => {
     }))
   }
 
-  const s = '/design/project-1';
-
-  const sudstring = s.substring(0, s.indexOf('/'))
-
-  console.log(`s`, s.substring(0, s.indexOf('/')))
-
 
   useEffect(()=> {
     setSelected(undefined)
     if (siteState.location){
-      setInitialValue(siteState.location.substring(1))
+      setInitialValue(siteState.location.substring(1).split('/')[0])
     }
   }, [siteState.location])
+
+  // useEffect(()=> {
+  //   if(initialValue){
+  //     console.log(initialValue)
+  //     const before = initialValue.split('/')[0]
+  //     const after = initialValue.slice('/')[1]
+  //     console.log(`after`, before)
+  //     console.log(initialValue)
+  //   }
+  // }, [initialValue])
 
   useEffect(()=> {
     if (init){
@@ -130,7 +134,7 @@ const Instructions = styled.div`
   box-shadow: var(--shadow);
   font-size: var(--font-small);
   color: var(--white);
-  background-color: var(--blue);
+  background-color: var(--major);
 `
 
 export default DropDownSelect

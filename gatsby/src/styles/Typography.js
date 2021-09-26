@@ -42,12 +42,6 @@ const Typography = createGlobalStyle`
   .large-text {
     font-size: 1.4em;
   }
-  .small-text {
-    font-size: 0.8em;
-    ${mobile} {
-      font-size: 1em;
-    }
-  }
 `;
 
 export default Typography;

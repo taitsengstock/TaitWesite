@@ -26,6 +26,8 @@ export default function Main( {className, children} ) {
         display: grid;
         grid-template-columns: 1fr minmax(0px, 1140px) 1fr;
         padding: var(--spacing-07);
+        overflow-y: scroll;
+        max-height: 100%;
       `}
     >
       <div css={css`

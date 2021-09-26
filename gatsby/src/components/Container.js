@@ -10,7 +10,9 @@ const Container = ({ children, className }) => {
       css={css`
         display: grid;
         grid-template-columns: max-content 1fr;
-        min-height: var(--body-height);
+        /* min-height: var(--body-height);
+        max-height: var(--body-height); */
+        height: var(--body-height);
         ${tablet}{
           grid-template-columns: 1fr;
         }

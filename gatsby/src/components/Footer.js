@@ -12,7 +12,7 @@ export default function Footer() {
       <div css={css`
         padding: 0 var(--spacing-07);
       `}>
-      <p className="small-text">
+      <p css={css`font-size: var(--font-small);`}>
         &copy; Tait Sengstock {new Date().getFullYear()}
       </p>
       </div>

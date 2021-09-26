@@ -12,8 +12,14 @@ export default function HomePage({ data }) {
   const {tablet, mobile} = breakpoints
 
   const projects = data?.allSanityArtwork?.edges
-
   const [siteState, setSiteState] = useSiteState()
+
+  useEffect(()=> {
+    setSiteState(prevState => ({
+      ...prevState,
+      sidebarExpanded: true,
+    }))
+  }, [])
 
   return (
     <ProjectGrid projects={projects} css={css`display: grid;`}/>

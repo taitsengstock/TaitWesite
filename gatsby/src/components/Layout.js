@@ -48,7 +48,10 @@ export default function Layout({ children }) {
           <Container>
             <Sidebar 
             css={css`
-              ${tablet}{grid-row: 2;}
+              ${tablet}{
+                grid-row: 2;
+                display: none;
+              }
             `} />
             <Main css={css`
             `}>

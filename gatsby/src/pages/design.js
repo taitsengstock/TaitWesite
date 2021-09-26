@@ -15,6 +15,13 @@ export default function DesignPage({ data }) {
 
   const [siteState, setSiteState] = useSiteState()
 
+  useEffect(()=> {
+    setSiteState(prevState => ({
+      ...prevState,
+      sidebarExpanded: true,
+    }))
+  }, [])
+
   return (
       <ProjectGrid 
         projects={projects} 

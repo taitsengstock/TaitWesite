@@ -46,6 +46,7 @@ const GlobalStyles = createGlobalStyle`
     --font-xxlarge: 27px;
     --font-xxxlarge: 60px;
     ${mobile}{
+      --font-xxsmall: 8px;
       --font-xsmall: 10px;
       --font-small: 12px;
       --font-regular: 16px;

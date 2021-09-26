@@ -10,11 +10,15 @@ export default function HomePage({ data }) {
 
   const {tablet, mobile} = breakpoints
   const [siteState, setSiteState] = useSiteState()  
+  
+
+  const profile = data.allSanityPerson?.nodes[0]
+  console.log(`profile`, profile)
 
   useEffect(()=> {
     setSiteState(prevState => ({
       ...prevState,
-      sidebarExpanded: true,
+      sidebarExpanded: false,
     }))
   }, [])
 
@@ -33,8 +37,8 @@ export default function HomePage({ data }) {
           grid-template-columns: repeat(2, max-content);
           column-gap: var(--spacing-05);
       `}>
-        <Button to={`/art`}> See Art</Button>
-        <Button to={`/design`}>See Design</Button>
+        <Button to={`/art`} inline={true}> See Art</Button>
+        <Button to={`/design`} inline>See Design</Button>
       </div>
     </div>
   );
@@ -69,5 +73,16 @@ export const query = graphql`
       }
       }
     }
+    allSanityPerson {
+      nodes {
+        name
+        image {
+          asset {
+            url
+          }
+        }
+      }
+    }
+
   }
 `;
